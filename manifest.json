@@ -1,0 +1,10 @@
+{
+  "id": "word-like-document-view",
+  "name": "Word-like Document View",
+  "version": "1.0.0",
+  "minAppVersion": "1.5.0",
+  "description": "Makes Markdown editing and reading feel closer to a Word/Docxer document page.",
+  "author": "OpenAI Codex",
+  "authorUrl": "https://openai.com",
+  "isDesktopOnly": true
+}
