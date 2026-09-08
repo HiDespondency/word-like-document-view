@@ -25,6 +25,9 @@ body {
 	--docxer-md-toolbar-text: #222222;
 	--docxer-md-toolbar-border: rgba(0, 0, 0, 0.18);
 	--docxer-md-toolbar-hover: rgba(0, 0, 0, 0.08);
+	--docxer-md-code-bg: #f2f2f2;
+	--docxer-md-code-text: #202020;
+	--docxer-md-code-border: #c8c8c8;
 	--word-like-zoom-factor: 1;
 	--docxer-md-zoom-factor: var(--word-like-zoom-factor);
 	--docxer-md-page-width-base: 800px;
@@ -210,6 +213,14 @@ body.word-like-document-view-enabled .markdown-preview-view .search-highlight > 
 	box-shadow: inset 0 -3px 0 var(--interactive-accent) !important;
 }
 
+/* In document view, marked text uses the document ink. The blue accent is
+   reserved for actual links, not for the underline-like mark treatment. */
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view mark {
+	box-shadow: inset 0 -2px 0 #000000 !important;
+	color: var(--docxer-md-ink) !important;
+	-webkit-text-fill-color: var(--docxer-md-ink) !important;
+}
+
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-sizer > div {
 	max-width: none !important;
 }
@@ -221,6 +232,35 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	font-family: var(--docxer-md-font);
 	font-size: var(--docxer-md-font-size);
 	line-height: var(--docxer-md-line-height);
+}
+
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view :is(code:not(pre code), .cm-inline-code),
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-inline-code {
+	background: var(--docxer-md-code-bg) !important;
+	background-color: var(--docxer-md-code-bg) !important;
+	color: var(--docxer-md-code-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-code-text) !important;
+	border: 1px solid var(--docxer-md-code-border) !important;
+	border-radius: 3px;
+	padding: 0.08em 0.28em;
+	font-family: "Cascadia Code", "Consolas", monospace;
+	font-size: 0.9em;
+}
+
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view pre,
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view pre code {
+	background: var(--docxer-md-alt-bg) !important;
+	background-color: var(--docxer-md-alt-bg) !important;
+	color: var(--docxer-md-ink) !important;
+	-webkit-text-fill-color: var(--docxer-md-ink) !important;
+}
+
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view pre code {
+	border: 0 !important;
+	border-radius: 0;
+	padding: 0;
+	font-family: "Cascadia Code", "Consolas", monospace;
+	font-size: 0.9em;
 }
 
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-line {
@@ -373,18 +413,110 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	--text-faint: var(--docxer-md-faint);
 	--metadata-label-text-color: var(--docxer-md-muted);
 	--metadata-input-text-color: var(--docxer-md-ink);
+	--metadata-label-background-active: #ffffff;
+	--metadata-input-background-active: #ffffff;
 	--metadata-background: transparent;
 	--metadata-property-background: transparent;
 	color: var(--docxer-md-ink);
 	font-family: var(--font-interface);
 }
 
+/* Единая раскладка свойств: название и значение живут в двух
+   стабильных колонках; значения тегов могут занимать несколько строк. */
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-property {
+  display: grid !important;
+  grid-template-columns: minmax(120px, 180px) minmax(0, 1fr) !important;
+  column-gap: 16px !important;
+  align-items: start !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-property-key {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow-wrap: anywhere !important;
+}
+
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-property-value {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  align-content: flex-start !important;
+  gap: 5px 6px !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  white-space: normal !important;
+  overflow: visible !important;
+}
+
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-property[data-property-key="теги"] {
+  height: auto !important;
+  min-height: 46px !important;
+  max-height: none !important;
+  align-items: start !important;
+}
+
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-property[data-property-key="теги"] .multi-select-pill {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+}
+
+/* Свойства на странице документа читаются как отдельные аккуратные поля.
+   Светло-серый фон отделяет их от белого листа, а увеличенный отступ не
+   даёт длинным значениям и тегам упираться в границы строки. */
+body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] .metadata-property {
+	box-sizing: border-box !important;
+	min-height: 38px !important;
+	padding: 6px 8px !important;
+	background: #ffffff !important;
+	background-color: #ffffff !important;
+	border: 1px solid #d0d0d0 !important;
+	border-radius: 6px !important;
+}
+
+/* При наведении выделяется вся строка свойства, а не только её рамка. */
+body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] .metadata-property:hover,
+body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] .metadata-property:focus-within {
+	background: #f3f3f3 !important;
+	background-color: #f3f3f3 !important;
+	border-color: #b8b8b8 !important;
+	box-shadow: none !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] .metadata-property[data-property-key="теги"] {
+	min-height: 46px !important;
+	padding-top: 8px !important;
+	padding-bottom: 8px !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] .metadata-property :is(.metadata-property-key, .metadata-property-value, .metadata-property-key-input, .metadata-input-longtext, .metadata-input-text) {
+	background: transparent !important;
+	background-color: transparent !important;
+}
+
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-container * {
 	color: inherit;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-property-key {
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-property-key,
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-property-key:hover {
 	color: var(--docxer-md-muted) !important;
+	background: #ffffff !important;
+	background-color: #ffffff !important;
+}
+
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] :is(.metadata-property-key-input, input.metadata-property-key-input, .metadata-property-key-input:hover, .metadata-property-key-input:focus) {
+	background: #ffffff !important;
+	background-color: #ffffff !important;
+	color: var(--docxer-md-muted) !important;
+	-webkit-text-fill-color: var(--docxer-md-muted) !important;
+	box-shadow: none !important;
 }
 
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-property-value,
@@ -394,17 +526,134 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	-webkit-text-fill-color: var(--docxer-md-ink) !important;
 }
 
+/* Светлая страница должна сохранять светлые всплывающие элементы. Это
+   касается подсказок свойств и предпросмотра ссылок при наведении. */
+body.word-like-document-view-enabled.word-like-document-view-document-light :is(.tooltip, .popover.hover-popover) {
+	background: #ffffff !important;
+	background-color: #ffffff !important;
+	color: #000000 !important;
+	-webkit-text-fill-color: #000000 !important;
+	border: 1px solid #8a8a8a !important;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18) !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light :is(.tooltip *, .popover.hover-popover *) {
+	color: #000000 !important;
+	-webkit-text-fill-color: #000000 !important;
+}
+
+/* Ссылки в светлом документе используют обычный синий цвет Word/Obsidian;
+   основной текст при этом остаётся чёрным. */
+body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] :is(
+	a.internal-link,
+	a.external-link,
+	.markdown-preview-view a,
+	.cm-link,
+	.cm-url,
+	.cm-hmd-internal-link,
+	.cm-hmd-footnote,
+	.cm-footref
+) {
+	color: var(--docxer-md-link) !important;
+	-webkit-text-fill-color: var(--docxer-md-link) !important;
+	text-decoration-color: currentColor !important;
+	opacity: 1 !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] :is(
+	a.internal-link:hover,
+	a.external-link:hover,
+	.cm-link:hover,
+	.cm-url:hover,
+	.cm-hmd-internal-link:hover,
+	.cm-hmd-footnote:hover,
+	.cm-footref:hover
+) {
+	color: var(--link-color-hover) !important;
+	-webkit-text-fill-color: var(--link-color-hover) !important;
+}
+
+/* Теги — отдельные светло-голубые метки, а не обычные ссылки. */
+body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] .metadata-container .multi-select-pill {
+	background: #e5f1ff !important;
+	background-color: #e5f1ff !important;
+	border: 1px solid #b7d5f5 !important;
+	border-radius: 999px !important;
+	color: #234f7d !important;
+	-webkit-text-fill-color: #234f7d !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] .metadata-container .multi-select-pill-content {
+	color: #234f7d !important;
+	-webkit-text-fill-color: #234f7d !important;
+}
+
+/* Список вариантов для тегов не должен выпадать чёрным прямоугольником на
+   светлой странице. */
+body.word-like-document-view-enabled.word-like-document-view-document-light :is(.suggestion-container, .suggestion-container .suggestion-item) {
+	background: #f1f1f1 !important;
+	background-color: #f1f1f1 !important;
+	color: #202020 !important;
+	-webkit-text-fill-color: #202020 !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .suggestion-container {
+	border: 1px solid #bdbdbd !important;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18) !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .suggestion-container .suggestion-item.is-selected,
+body.word-like-document-view-enabled.word-like-document-view-document-light .suggestion-container .suggestion-item:hover {
+	background: #dcecff !important;
+	background-color: #dcecff !important;
+	color: #123f73 !important;
+	-webkit-text-fill-color: #123f73 !important;
+}
+
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-container .multi-select-pill {
-	min-height: 26px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	align-items: center;
+	box-sizing: border-box !important;
+	display: inline-flex !important;
+	flex: 0 0 auto !important;
+	align-items: center !important;
+	justify-content: flex-start !important;
+	gap: 6px !important;
+	height: 28px !important;
+	min-height: 28px !important;
+	padding: 4px 10px !important;
+	margin: 0 !important;
+	border-radius: 999px !important;
+	white-space: nowrap !important;
+	line-height: 18px !important;
 }
 
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-container .multi-select-pill-content {
-	min-height: 18px;
-	line-height: 18px;
-	overflow: visible;
+	display: inline-flex !important;
+	align-items: center !important;
+	min-height: 18px !important;
+	margin: 0 !important;
+	line-height: 18px !important;
+	white-space: nowrap !important;
+	overflow: visible !important;
+}
+
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-container .multi-select-pill :is(
+	.multi-select-pill-remove-button,
+	.clickable-icon,
+	button,
+	svg
+) {
+	box-sizing: border-box !important;
+	flex: 0 0 14px !important;
+	width: 14px !important;
+	height: 14px !important;
+	min-width: 14px !important;
+	min-height: 14px !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	line-height: 14px !important;
 }
 
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-rendered :is(.el-div, .el-callout, .el-blockquote):has(> :is(.callout, [data-callout])) {
@@ -742,3 +991,72 @@ body.word-like-document-view-enabled:is(.word-like-document-view-env-focus-dark,
 .word-like-toolbar-settings-group[open] .setting-item-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .word-like-toolbar-settings-group[open] .setting-item-description { display: none; }
 .word-like-toolbar-settings-group[open] .word-like-setting-icon { margin-left: 5px; }
+
+/* Tables inherit Obsidian's code background with higher specificity. Keep
+   inline command labels readable on the Word-like document page as well. */
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table code,
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table code * {
+	background: var(--docxer-md-code-bg) !important;
+	background-color: var(--docxer-md-code-bg) !important;
+	color: var(--docxer-md-code-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-code-text) !important;
+	border-color: var(--docxer-md-code-border) !important;
+}
+
+/* Шестиколоночный реестр источников шире листа намеренно: контейнер
+   прокручивается по горизонтали, поэтому содержимое последнего столбца не
+   сжимается в нечитаемые узкие буквы. */
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view .table-wrapper:has(table th:nth-child(6)),
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view .markdown-rendered-table:has(table th:nth-child(6)) {
+	overflow-x: auto !important;
+	overflow-y: visible !important;
+	scrollbar-width: auto !important;
+}
+
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view .table-wrapper:has(table th:nth-child(6))::-webkit-scrollbar,
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view .markdown-rendered-table:has(table th:nth-child(6))::-webkit-scrollbar {
+	display: initial !important;
+	height: 10px !important;
+}
+
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table:has(th:nth-child(6)) {
+	width: max-content !important;
+	min-width: 1080px !important;
+	max-width: none !important;
+	table-layout: auto !important;
+}
+
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget table code,
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget table code * {
+	background: var(--docxer-md-code-bg) !important;
+	background-color: var(--docxer-md-code-bg) !important;
+	color: var(--docxer-md-code-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-code-text) !important;
+	border: 1px solid var(--docxer-md-code-border) !important;
+	border-radius: 3px !important;
+	padding: 0.08em 0.28em !important;
+	font-family: "Cascadia Code", "Consolas", monospace !important;
+	font-size: 0.99em !important;
+	line-height: var(--docxer-md-line-height) !important;
+	vertical-align: baseline;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] :is(.markdown-preview-view, .markdown-source-view.mod-cm6) blockquote {
+	border-left: 3px solid #000000 !important;
+	background: transparent !important;
+	color: var(--docxer-md-ink) !important;
+	-webkit-text-fill-color: var(--docxer-md-ink) !important;
+	padding-left: 16px !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-dark .workspace-leaf-content[data-type="markdown"] :is(.markdown-preview-view, .markdown-source-view.mod-cm6) blockquote {
+	border-left: 3px solid #ffffff !important;
+	background: transparent !important;
+	color: var(--docxer-md-ink) !important;
+	-webkit-text-fill-color: var(--docxer-md-ink) !important;
+	padding-left: 16px !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] :is(.markdown-preview-view, .markdown-rendered) blockquote {
+	border-left: 3px solid #000000 !important;
+}
