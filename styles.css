@@ -216,9 +216,10 @@ body.word-like-document-view-enabled .markdown-preview-view .search-highlight > 
 /* In document view, marked text uses the document ink. The blue accent is
    reserved for actual links, not for the underline-like mark treatment. */
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view mark {
-	box-shadow: inset 0 -2px 0 #000000 !important;
+	box-shadow: inset 0 -2px 0 currentColor !important;
 	color: var(--docxer-md-ink) !important;
 	-webkit-text-fill-color: var(--docxer-md-ink) !important;
+	text-decoration-color: currentColor !important;
 }
 
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-sizer > div {
