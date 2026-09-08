@@ -556,7 +556,7 @@ body.word-like-document-view-enabled.word-like-document-view-document-light .wor
 ) {
 	color: var(--docxer-md-link) !important;
 	-webkit-text-fill-color: var(--docxer-md-link) !important;
-	text-decoration-color: #000000 !important;
+	text-decoration-color: currentColor !important;
 	opacity: 1 !important;
 }
 
