@@ -224,6 +224,17 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	text-decoration-color: currentColor !important;
 }
 
+/* В режиме Live Preview выделение ==...== представлено CodeMirror-классом
+   .cm-highlight, поэтому оно требует того же правила, что и <mark>. */
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-highlight {
+	background: transparent !important;
+	background-color: transparent !important;
+	box-shadow: inset 0 -2px 0 currentColor !important;
+	color: var(--docxer-md-ink) !important;
+	-webkit-text-fill-color: var(--docxer-md-ink) !important;
+	text-decoration-color: currentColor !important;
+}
+
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-sizer > div {
 	max-width: none !important;
 }
