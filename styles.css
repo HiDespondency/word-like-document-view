@@ -70,6 +70,15 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	background: var(--docxer-md-canvas) !important;
 }
 
+/* Полный просмотр PDF — отдельный встроенный вид Obsidian, поэтому его
+   окружение нужно подключить к тем же параметрам Word-like вручную. */
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="pdf"] .view-content,
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="pdf"] .pdf-viewer-container,
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="pdf"] .pdf-viewer {
+	background: var(--docxer-md-canvas) !important;
+	background-color: var(--docxer-md-canvas) !important;
+}
+
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view,
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-reading-view,
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6,
@@ -544,9 +553,8 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	-webkit-text-fill-color: var(--docxer-md-ink) !important;
 }
 
-/* Светлая страница должна сохранять светлые всплывающие элементы. Это
-   касается подсказок свойств и предпросмотра ссылок при наведении. */
-body.word-like-document-view-enabled.word-like-document-view-document-light :is(.tooltip, .popover.hover-popover) {
+/* Предпросмотр ссылки относится к светлой странице и остаётся светлым. */
+body.word-like-document-view-enabled.word-like-document-view-document-light .popover.hover-popover {
 	background: #ffffff !important;
 	background-color: #ffffff !important;
 	color: #000000 !important;
@@ -555,9 +563,55 @@ body.word-like-document-view-enabled.word-like-document-view-document-light :is(
 	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18) !important;
 }
 
-body.word-like-document-view-enabled.word-like-document-view-document-light :is(.tooltip *, .popover.hover-popover *) {
+body.word-like-document-view-enabled.word-like-document-view-document-light .popover.hover-popover * {
 	color: #000000 !important;
 	-webkit-text-fill-color: #000000 !important;
+}
+
+/* Вложенный просмотрщик DOCX/PDF должен использовать фон страницы уже на
+   этапе загрузки, иначе светлый popover на мгновение сменяется тёмным. */
+body.word-like-document-view-enabled.word-like-document-view-document-light .popover.hover-popover:has(.docxer-embed, .pdf-embed) :is(.docxer-embed, .pdf-embed, .pdf-embed iframe) {
+	background: var(--docxer-md-page) !important;
+	background-color: var(--docxer-md-page) !important;
+	color: var(--docxer-md-ink) !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-dark .popover.hover-popover:has(.docxer-embed, .pdf-embed) :is(.docxer-embed, .pdf-embed, .pdf-embed iframe) {
+	background: var(--docxer-md-page) !important;
+	background-color: var(--docxer-md-page) !important;
+	color: var(--docxer-md-ink) !important;
+}
+
+/* Обычная подсказка интерфейса не является предпросмотром страницы.
+   В тёмном окружении она должна оставаться тёмной, в том числе на Canvas. */
+body.theme-dark.word-like-document-view-enabled .tooltip {
+	/* Тёмная палитра Word-like, но не чистый чёрный: тултип должен
+	   отделяться от тёмного фона Canvas и боковой панели. */
+	--tooltip-bg: #2a2a2a !important;
+	background: var(--tooltip-bg) !important;
+	background-color: var(--tooltip-bg) !important;
+	color: var(--text-normal) !important;
+	-webkit-text-fill-color: var(--text-normal) !important;
+	border: 1px solid var(--background-modifier-border) !important;
+}
+
+body.theme-dark.word-like-document-view-enabled .tooltip .tooltip-arrow {
+	border-bottom-color: var(--tooltip-bg) !important;
+}
+
+body.theme-dark.word-like-document-view-enabled .tooltip.mod-right .tooltip-arrow {
+	border-right-color: var(--tooltip-bg) !important;
+	border-bottom-color: transparent !important;
+}
+
+body.theme-dark.word-like-document-view-enabled .tooltip.mod-left .tooltip-arrow {
+	border-left-color: var(--tooltip-bg) !important;
+	border-bottom-color: transparent !important;
+}
+
+body.theme-dark.word-like-document-view-enabled .tooltip.mod-top .tooltip-arrow {
+	border-top-color: var(--tooltip-bg) !important;
+	border-bottom-color: transparent !important;
 }
 
 /* Ссылки в светлом документе используют обычный синий цвет Word/Obsidian;
@@ -574,8 +628,26 @@ body.word-like-document-view-enabled.word-like-document-view-document-light .wor
 ) {
 	color: var(--docxer-md-link) !important;
 	-webkit-text-fill-color: var(--docxer-md-link) !important;
+	font-family: var(--docxer-md-font) !important;
+	font-variant: normal !important;
+	font-feature-settings: normal !important;
 	text-decoration-color: currentColor !important;
 	opacity: 1 !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-dark .workspace-leaf-content[data-type="markdown"] :is(
+	a.internal-link,
+	a.external-link,
+	.markdown-preview-view a,
+	.cm-link,
+	.cm-url,
+	.cm-hmd-internal-link,
+	.cm-hmd-footnote,
+	.cm-footref
+) {
+	font-family: var(--docxer-md-font) !important;
+	font-variant: normal !important;
+	font-feature-settings: normal !important;
 }
 
 body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] :is(
