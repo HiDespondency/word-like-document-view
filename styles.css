@@ -11,6 +11,15 @@ body {
 	--docxer-md-callout-text: #1f1f1f;
 	--docxer-md-callout-title: rgb(var(--callout-color));
 	--docxer-md-callout-bg-opacity: 0.12;
+	--docxer-md-table-bg: var(--wrapped-table-bg, var(--docxer-md-page));
+	--docxer-md-table-text: var(--wrapped-table-text, var(--docxer-md-ink));
+	--docxer-md-table-border: var(--wrapped-table-border, var(--docxer-md-border));
+	--docxer-md-table-header-bg: var(--wrapped-table-header-bg, var(--docxer-md-secondary-bg));
+	--docxer-md-table-alt-bg: var(--wrapped-table-alt-bg, var(--docxer-md-alt-bg));
+	--docxer-md-table-link: var(--wrapped-table-link, var(--docxer-md-link));
+	--docxer-md-table-outer-border-width: var(--wrapped-table-outer-border-width, 1px);
+	--docxer-md-table-cell-border-width: var(--wrapped-table-cell-border-width, 1px);
+	--docxer-md-table-cell-padding: var(--wrapped-table-cell-padding, 7px 9px);
 	--docxer-md-cursor: #003f8f;
 	--docxer-md-selection-bg: #b8d7ff;
 	--docxer-md-selection-text: #000000;
@@ -313,10 +322,11 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	margin: 14px 0 16px !important;
 	table-layout: auto !important;
 	border-collapse: collapse !important;
-	border: 1px solid var(--docxer-md-border) !important;
-	background: var(--docxer-md-page) !important;
-	color: var(--docxer-md-ink) !important;
-	-webkit-text-fill-color: var(--docxer-md-ink) !important;
+	border: var(--docxer-md-table-outer-border-width) solid var(--docxer-md-table-border) !important;
+	box-shadow: 0 0 0 1px var(--docxer-md-table-border) !important;
+	background: var(--docxer-md-table-bg) !important;
+	color: var(--docxer-md-table-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-table-text) !important;
 	font-family: var(--docxer-md-font) !important;
 	font-size: calc(var(--docxer-md-font-size) * 0.92) !important;
 	line-height: 1.25 !important;
@@ -332,11 +342,11 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view td,
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget th,
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget td {
-	padding: 7px 9px !important;
-	border: 1px solid var(--docxer-md-border) !important;
-	background: var(--docxer-md-page) !important;
-	color: var(--docxer-md-ink) !important;
-	-webkit-text-fill-color: var(--docxer-md-ink) !important;
+	padding: var(--docxer-md-table-cell-padding) !important;
+	border: var(--docxer-md-table-cell-border-width) solid var(--docxer-md-table-border) !important;
+	background: var(--docxer-md-table-bg) !important;
+	color: var(--docxer-md-table-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-table-text) !important;
 	vertical-align: top !important;
 	white-space: normal !important;
 	word-break: normal !important;
@@ -358,11 +368,16 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view th,
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget th {
-	background: var(--docxer-md-secondary-bg) !important;
-	color: var(--docxer-md-ink) !important;
-	-webkit-text-fill-color: var(--docxer-md-ink) !important;
+	background: var(--docxer-md-table-header-bg) !important;
+	color: var(--docxer-md-table-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-table-text) !important;
 	font-weight: 700 !important;
 	text-align: center !important;
+}
+
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table tr:nth-child(even) td,
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget tr:nth-child(even) td {
+	background: var(--docxer-md-table-alt-bg) !important;
 }
 
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table strong,
@@ -661,6 +676,16 @@ body.word-like-document-view-enabled.word-like-document-view-document-light .wor
 ) {
 	color: var(--link-color-hover) !important;
 	-webkit-text-fill-color: var(--link-color-hover) !important;
+}
+
+/* Табличные ссылки остаются чёрными и при наведении, как в оформлении темы. */
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table a,
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table a:hover,
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget a,
+body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget a:hover {
+	color: var(--docxer-md-table-link) !important;
+	-webkit-text-fill-color: var(--docxer-md-table-link) !important;
+	text-decoration-color: currentColor !important;
 }
 
 /* Теги — отдельные светло-голубые метки, а не обычные ссылки. */
