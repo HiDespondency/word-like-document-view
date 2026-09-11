@@ -1,9 +1,9 @@
 {
   "id": "word-like-document-view",
-  "name": "Word-like",
+  "name": "Вид как в Word",
   "version": "1.3.0",
   "minAppVersion": "1.5.0",
-  "description": "Word-like document page, formatting toolbar, text zoom, and Russian guillemets for Markdown.",
+  "description": "Страница документа как в Word, панель форматирования, масштаб текста и русские кавычки для Markdown.",
   "author": "OpenAI Codex",
   "authorUrl": "https://openai.com",
   "isDesktopOnly": true

@@ -178,26 +178,26 @@ class WordLikeDocumentViewPlugin extends Plugin {
 	addCommands() {
 		this.addCommand({
 			id: 'toggle-word-like-document-view',
-			name: 'Включить/выключить Word-like вид документа',
+			name: 'Включить/выключить вид документа как в Word',
 			callback: async () => {
 				this.settings.enabled = !this.settings.enabled;
 				await this.saveSettings();
 				this.applySettings();
-				new Notice(this.settings.enabled ? 'Word-like вид включён' : 'Word-like вид выключен');
+				new Notice(this.settings.enabled ? 'Вид как в Word включён' : 'Вид как в Word выключен');
 			}
 		});
 
 		this.addCommand({
 			id: 'show-word-like-document-view-status',
-			name: 'Показать состояние Word-like вида',
+			name: 'Показать состояние вида как в Word',
 			callback: () => {
 				const activeFile = this.app.workspace.getActiveFile()?.path ?? 'нет активного файла';
 				const state = [
-					`Word-like: ${this.settings.enabled ? 'включён' : 'выключен'}`,
+					`Вид как в Word: ${this.settings.enabled ? 'включён' : 'выключен'}`,
 					`версия: ${PLUGIN_VERSION}`,
 					`файл: ${activeFile}`,
 					`line-height: ${this.settings.lineHeight}`,
-					`readable line length: ${this.settings.disableReadableLineLength ? 'отключается плагином' : 'не трогается'}`
+					`Ограничение ширины строки: ${this.settings.disableReadableLineLength ? 'отключается плагином' : 'не изменяется'}`
 				].join('\n');
 				console.info(`[${PLUGIN_ID}] ${state}`);
 				new Notice(state, 7000);
@@ -206,18 +206,18 @@ class WordLikeDocumentViewPlugin extends Plugin {
 
 		this.addCommand({
 			id: 'show-word-like-document-view-compatibility',
-			name: 'Проверить совместимость Word-like',
+			name: 'Проверить совместимость вида как в Word',
 			callback: () => this.showCompatibilityStatus()
 		});
 
 		this.addCommand({
 			id: 'reset-word-like-document-view',
-			name: 'Сбросить настройки Word-like вида',
+			name: 'Сбросить настройки вида как в Word',
 			callback: async () => {
 				this.settings = { ...DEFAULT_SETTINGS };
 				await this.saveSettings();
 				this.applySettings();
-				new Notice('Настройки Word-like вида сброшены');
+				new Notice('Настройки вида как в Word сброшены');
 			}
 		});
 
@@ -258,7 +258,7 @@ class WordLikeDocumentViewPlugin extends Plugin {
 		const docxViews = document.querySelectorAll(VIEW_ADAPTER_SELECTOR.docx).length;
 		const activeFile = this.app.workspace.getActiveFile()?.path ?? 'нет активного файла';
 		const state = [
-			`Word-like: ${this.settings.enabled ? 'включён' : 'выключен'}`,
+			`Вид как в Word: ${this.settings.enabled ? 'включён' : 'выключен'}`,
 			`Markdown-хосты: ${markdownHosts}`,
 			`PDF-хосты: ${pdfHosts}`,
 			`DOCX-представления: ${docxViews}`,
@@ -721,7 +721,7 @@ class WordLikeDocumentSettingTab extends PluginSettingTab {
 	display() {
 		const { containerEl } = this;
 		containerEl.empty();
-		containerEl.createEl('h2', { text: 'Word-like' });
+		containerEl.createEl('h2', { text: 'Вид как в Word' });
 		const displayDetails = containerEl.createEl('details', { cls: 'word-like-toolbar-settings-group' });
 		const displaySummary = displayDetails.createEl('summary');
 		displaySummary.createSpan({ text: 'Параметры интерфейса и отображения' });
@@ -729,7 +729,7 @@ class WordLikeDocumentSettingTab extends PluginSettingTab {
 		displayReset.addEventListener('click', async (event) => { event.preventDefault(); event.stopPropagation(); const currentTools = this.plugin.settings.toolbarCommands; this.plugin.settings = { ...DEFAULT_SETTINGS, toolbarCommands: currentTools }; await this.plugin.saveSettings(); this.plugin.applySettings(); this.display(); });
 
 		new Setting(displayDetails)
-			.setName('Включить Word-like вид')
+			.setName('Включить вид как в Word')
 			.setDesc('Оформляет только markdown-область как лист Word/Docxer. Не переписывает Obsidian целиком.')
 			.addToggle((toggle) => toggle
 				.setValue(this.plugin.settings.enabled)
@@ -792,15 +792,15 @@ class WordLikeDocumentSettingTab extends PluginSettingTab {
 				.onChange((value) => this.updateSetting('guillemetsEnabled', value)));
 
 		new Setting(displayDetails)
-			.setName('Отключать readable line length')
+			.setName('Отключать ограничение ширины строки')
 			.setDesc('Не рекомендуется. Меняет глобальную настройку Obsidian; включать только если ограничение ширины явно мешает листу.')
 			.addToggle((toggle) => toggle
 				.setValue(this.plugin.settings.disableReadableLineLength)
 				.onChange((value) => this.updateSetting('disableReadableLineLength', value)));
 
 		new Setting(displayDetails)
-			.setName('Скрывать внутренний scrollbar редактора')
-			.setDesc('Убирает второй scrollbar внутри редактора, но не меняет прокрутку документа.')
+			.setName('Скрывать внутреннюю полосу прокрутки редактора')
+			.setDesc('Убирает вторую полосу прокрутки внутри редактора, но не меняет прокрутку документа.')
 			.addToggle((toggle) => toggle
 				.setValue(this.plugin.settings.hideInnerScrollbar)
 				.onChange((value) => this.updateSetting('hideInnerScrollbar', value)));
