@@ -1,4 +1,8 @@
-body {
+/* Design tokens are scoped to the plugin state. This keeps Word-like's
+   implementation details out of the rest of the vault when the plugin is
+   disabled, while the selectors below continue to inherit one stable set of
+   values from the document-view root. */
+body.word-like-document-view-enabled {
 	--docxer-md-canvas: #f3f3f3;
 	--docxer-md-page: #ffffff;
 	--docxer-md-ink: #000000;
@@ -62,6 +66,7 @@ body {
 	--docxer-md-font-size: calc(var(--docxer-md-font-size-base) * var(--docxer-md-zoom-factor));
 }
 
+/* Document geometry and the page surface. */
 body.word-like-document-view-static-page {
 	--docxer-md-page-width: var(--docxer-md-page-width-base);
 	--docxer-md-page-min-height: var(--docxer-md-page-min-height-base);
@@ -74,6 +79,9 @@ body.word-like-document-view-static-page {
 	--docxer-md-font-size: var(--docxer-md-font-size-base);
 }
 
+/* Native Obsidian surfaces are the compatibility boundary. The plugin keeps
+   its rules under the Word-like body state instead of changing global theme
+   selectors. */
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .view-content,
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view {
 	background: var(--docxer-md-canvas) !important;
@@ -308,6 +316,8 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	margin: 0 0 12px;
 }
 
+/* Markdown tables: one component contract shared by Reading View and Live
+   Preview. Obsidian's native table DOM is intentionally isolated here. */
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view .table-wrapper,
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view .markdown-rendered-table {
 	max-width: 100% !important;
@@ -449,6 +459,7 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	line-height: var(--line-height-normal);
 }
 
+/* Properties and tags. */
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-container {
 	--text-normal: var(--docxer-md-ink);
 	--text-muted: var(--docxer-md-muted);
@@ -568,6 +579,7 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	-webkit-text-fill-color: var(--docxer-md-ink) !important;
 }
 
+/* Popovers and embedded document previews. */
 /* Предпросмотр ссылки относится к светлой странице и остаётся светлым. */
 body.word-like-document-view-enabled.word-like-document-view-document-light .popover.hover-popover {
 	background: #ffffff !important;
@@ -629,6 +641,7 @@ body.theme-dark.word-like-document-view-enabled .tooltip.mod-top .tooltip-arrow 
 	border-bottom-color: transparent !important;
 }
 
+/* Links and inline references. */
 /* Ссылки в светлом документе используют обычный синий цвет Word/Obsidian;
    основной текст при этом остаётся чёрным. */
 body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] :is(
@@ -771,6 +784,7 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	line-height: 14px !important;
 }
 
+/* Callouts. */
 body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-rendered :is(.el-div, .el-callout, .el-blockquote):has(> :is(.callout, [data-callout])) {
 	display: block !important;
 	visibility: visible !important;
@@ -871,6 +885,8 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	margin-bottom: 0;
 }
 
+/* Theme compatibility and surrounding workspace chrome. These are the
+   deliberate override layer for native Obsidian surfaces. */
 body.theme-dark.word-like-document-view-compat-dark .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-link,
 body.theme-dark.word-like-document-view-compat-dark .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-url,
 body.theme-dark.word-like-document-view-compat-dark .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-hmd-internal-link,
@@ -1050,6 +1066,8 @@ body.word-like-document-view-enabled:is(.word-like-document-view-env-focus-dark,
 	}
 }
 
+/* Plugin-owned toolbar and settings controls do not need !important: they
+   have their own class namespace and use Obsidian design tokens directly. */
 .word-like-toolbar {
 	display: flex;
 	align-items: center;

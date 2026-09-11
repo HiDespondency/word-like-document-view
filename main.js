@@ -54,17 +54,18 @@ const NUMERIC_SETTINGS = [
 	'zoomStepPercent'
 ];
 
-const BODY_CLASSES = [
-	'word-like-document-view-enabled',
-	'word-like-document-view-static-page',
-	'word-like-document-view-compat-dark',
-	'word-like-document-view-show-inner-scrollbar',
-	'word-like-document-view-document-light',
-	'word-like-document-view-document-dark',
-	'word-like-document-view-env-focus-dark',
-	'word-like-document-view-env-word2019-blue',
-	'word-like-document-view-env-word2000-blue'
-];
+const BODY_CLASS = Object.freeze({
+	enabled: 'word-like-document-view-enabled',
+	staticPage: 'word-like-document-view-static-page',
+	compatDark: 'word-like-document-view-compat-dark',
+	showInnerScrollbar: 'word-like-document-view-show-inner-scrollbar',
+	documentLight: 'word-like-document-view-document-light',
+	documentDark: 'word-like-document-view-document-dark',
+	environmentFocusDark: 'word-like-document-view-env-focus-dark',
+	environmentWord2019Blue: 'word-like-document-view-env-word2019-blue',
+	environmentWord2000Blue: 'word-like-document-view-env-word2000-blue'
+});
+const BODY_CLASSES = Object.values(BODY_CLASS);
 
 const CSS_VARIABLES = [
 	'--docxer-md-canvas',
@@ -489,15 +490,15 @@ class WordLikeDocumentViewPlugin extends Plugin {
 			return;
 		}
 
-		document.body.classList.add('word-like-document-view-enabled');
-		document.body.classList.toggle('word-like-document-view-static-page', !this.settings.scalePageWithZoom);
-		document.body.classList.toggle('word-like-document-view-show-inner-scrollbar', !this.settings.hideInnerScrollbar);
-		document.body.classList.toggle('word-like-document-view-compat-dark', this.settings.fixDarkThemeContrast);
-		document.body.classList.toggle('word-like-document-view-document-light', this.settings.documentTheme === 'light');
-		document.body.classList.toggle('word-like-document-view-document-dark', this.settings.documentTheme === 'dark');
-		document.body.classList.toggle('word-like-document-view-env-focus-dark', this.settings.environmentTheme === 'focusDark');
-		document.body.classList.toggle('word-like-document-view-env-word2019-blue', this.settings.environmentTheme === 'word2019Blue');
-		document.body.classList.toggle('word-like-document-view-env-word2000-blue', this.settings.environmentTheme === 'word2000Blue');
+		document.body.classList.add(BODY_CLASS.enabled);
+		document.body.classList.toggle(BODY_CLASS.staticPage, !this.settings.scalePageWithZoom);
+		document.body.classList.toggle(BODY_CLASS.showInnerScrollbar, !this.settings.hideInnerScrollbar);
+		document.body.classList.toggle(BODY_CLASS.compatDark, this.settings.fixDarkThemeContrast);
+		document.body.classList.toggle(BODY_CLASS.documentLight, this.settings.documentTheme === 'light');
+		document.body.classList.toggle(BODY_CLASS.documentDark, this.settings.documentTheme === 'dark');
+		document.body.classList.toggle(BODY_CLASS.environmentFocusDark, this.settings.environmentTheme === 'focusDark');
+		document.body.classList.toggle(BODY_CLASS.environmentWord2019Blue, this.settings.environmentTheme === 'word2019Blue');
+		document.body.classList.toggle(BODY_CLASS.environmentWord2000Blue, this.settings.environmentTheme === 'word2000Blue');
 
 		this.setCssVariables();
 		this.applyZoom();
