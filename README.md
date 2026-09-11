@@ -27,6 +27,7 @@ S:/Users/HiDespondency/Documents/Obsidian Plugins/word-like-document-view
 - `styles.css` - собранный файл, который загружает Obsidian.
 - `styles/` - исходные CSS-модули по областям ответственности.
 - `build-css.js` - воспроизводимая сборка `styles/` в `styles.css` без зависимостей.
+- `audit-css.js` - структурная проверка сборки, границы адаптера и безопасных зон CSS.
 
 ## Архитектура
 
@@ -44,4 +45,9 @@ S:/Users/HiDespondency/Documents/Obsidian Plugins/word-like-document-view
 ```text
 node build-css.js
 node --check main.js
+node audit-css.js
 ```
+
+Команда «Проверить совместимость Word-like» в палитре команд показывает число
+подключённых Markdown-, PDF- и DOCX-представлений. Это диагностический отчёт:
+отсутствие хоста означает, что такой вид сейчас не открыт, а не ошибку плагина.

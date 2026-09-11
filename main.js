@@ -3,7 +3,7 @@
 const { Notice, Plugin, PluginSettingTab, Setting, MarkdownView, setIcon } = require('obsidian');
 
 const PLUGIN_ID = 'word-like-document-view';
-const PLUGIN_VERSION = '2026-08-30-editor-tools';
+const PLUGIN_VERSION = '2026-09-11-compatibility-audit';
 const OPEN_QUOTE = '\u00AB';
 const CLOSE_QUOTE = '\u00BB';
 const EM_DASH = '\u2014';
@@ -73,7 +73,8 @@ const BODY_CLASSES = Object.values(BODY_CLASS);
 const VIEW_ADAPTER_SELECTOR = Object.freeze({
 	leaf: '.workspace-leaf-content',
 	markdown: '[data-type="markdown"]',
-	pdf: '[data-type="pdf"]'
+	pdf: '[data-type="pdf"]',
+	docx: '[data-type="docx-view"]'
 });
 const VIEW_HOST_CLASS = Object.freeze({
 	markdown: 'word-like-document-view-host-markdown',
@@ -204,6 +205,12 @@ class WordLikeDocumentViewPlugin extends Plugin {
 		});
 
 		this.addCommand({
+			id: 'show-word-like-document-view-compatibility',
+			name: 'Проверить совместимость Word-like',
+			callback: () => this.showCompatibilityStatus()
+		});
+
+		this.addCommand({
 			id: 'reset-word-like-document-view',
 			name: 'Сбросить настройки Word-like вида',
 			callback: async () => {
@@ -242,6 +249,23 @@ class WordLikeDocumentViewPlugin extends Plugin {
 			name: 'Заменить прямые кавычки на «ёлочки»',
 			editorCallback: (editor) => this.convertQuotesInEditor(editor)
 		});
+	}
+
+	showCompatibilityStatus() {
+		const leaves = Array.from(document.querySelectorAll(VIEW_ADAPTER_SELECTOR.leaf));
+		const markdownHosts = leaves.filter((leaf) => leaf.classList.contains(VIEW_HOST_CLASS.markdown)).length;
+		const pdfHosts = leaves.filter((leaf) => leaf.classList.contains(VIEW_HOST_CLASS.pdf)).length;
+		const docxViews = document.querySelectorAll(VIEW_ADAPTER_SELECTOR.docx).length;
+		const activeFile = this.app.workspace.getActiveFile()?.path ?? 'нет активного файла';
+		const state = [
+			`Word-like: ${this.settings.enabled ? 'включён' : 'выключен'}`,
+			`Markdown-хосты: ${markdownHosts}`,
+			`PDF-хосты: ${pdfHosts}`,
+			`DOCX-представления: ${docxViews}`,
+			`файл: ${activeFile}`
+		].join('\n');
+		console.info(`[${PLUGIN_ID}] compatibility\n${state}`);
+		new Notice(state, 7000);
 	}
 
 	async loadSettings() {
