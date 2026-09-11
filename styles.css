@@ -1056,7 +1056,7 @@ body.word-like-document-view-enabled:is(.word-like-document-view-env-focus-dark,
 }
 
 @media (max-width: 860px) {
-	body {
+	body.word-like-document-view-enabled {
 		--docxer-md-page-width-base: calc(100vw - 28px);
 		--docxer-md-padding-top-base: 36px;
 		--docxer-md-padding-right-base: 28px;
