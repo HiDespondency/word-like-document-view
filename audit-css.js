@@ -22,11 +22,16 @@ const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
 const source = modules.map((file) => read(path.join('styles', file))).join('\n');
 const bundle = read('styles.css');
 const toolbarSource = read(path.join('styles', '90-toolbar.css')).replace(/\/\*[\s\S]*?\*\//g, '');
+const unscopedMarkdownSelectors = bundle.split(/\r?\n/).filter((line) =>
+	line.includes('body.word-like-document-view-enabled .markdown-') ||
+	line.includes('body.word-like-document-view-enabled :is(.markdown-')
+);
 const checks = [
 	['styles.css собран из всех CSS-модулей', source === bundle],
 	['в CSS нет несбалансированных фигурных скобок', (bundle.match(/{/g) || []).length === (bundle.match(/}/g) || []).length],
 	['в bundle нет прямых селекторов нативных leaf-контейнеров', !bundle.includes('workspace-leaf-content[data-type=') && !bundle.includes('workspace-leaf-content[data-type="')],
 	['панель инструментов не требует !important', !toolbarSource.includes('!important')],
+	['нативные Markdown-селекторы проходят через host-адаптер', unscopedMarkdownSelectors.length === 0],
 	['есть собственные точки подключения Markdown и PDF', bundle.includes('word-like-document-view-host-markdown') && bundle.includes('word-like-document-view-host-pdf')],
 	['есть общий контракт визуальных токенов', bundle.includes('--docxer-md-canvas') && bundle.includes('--docxer-md-page') && bundle.includes('--docxer-md-ink')]
 ];

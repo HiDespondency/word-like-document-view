@@ -91,29 +91,29 @@ body.word-like-document-view-enabled .word-like-document-view-host-markdown .mar
 	line-height: var(--docxer-md-line-height);
 }
 
-body.word-like-document-view-enabled .markdown-source-view.mod-cm6 .cm-content {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-content {
 	caret-color: var(--docxer-md-cursor) !important;
 }
 
-body.word-like-document-view-enabled .markdown-source-view.mod-cm6 :is(.cm-cursor, .cm-dropCursor, .cm-fat-cursor) {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 :is(.cm-cursor, .cm-dropCursor, .cm-fat-cursor) {
 	border-left-color: var(--docxer-md-cursor) !important;
 	border-left-width: 2px !important;
 }
 
-body.word-like-document-view-enabled .markdown-source-view.mod-cm6 .cm-selectionBackground {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-selectionBackground {
 	background: var(--docxer-md-selection-bg) !important;
 }
 
-body.word-like-document-view-enabled .markdown-source-view.mod-cm6 .cm-content ::selection,
-body.word-like-document-view-enabled .markdown-preview-view ::selection {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-content ::selection,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view ::selection {
 	background: var(--docxer-md-selection-bg) !important;
 	color: var(--docxer-md-selection-text) !important;
 }
 
 /* Поисковые совпадения получают акцентную линию; Markdown-выделение
    ==...== оформляется отдельным правилом ниже. */
-body.word-like-document-view-enabled .markdown-source-view.mod-cm6 :is(.cm-searching, .cm-searchMatch, .cm-selectionMatch, .obsidian-search-match-highlight, .is-searching, .is-flashing),
-body.word-like-document-view-enabled :is(.markdown-preview-view, .markdown-reading-view) :is(.search-highlight, .obsidian-search-match-highlight, .is-searching, .is-flashing, .mod-highlighted) {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 :is(.cm-searching, .cm-searchMatch, .cm-selectionMatch, .obsidian-search-match-highlight, .is-searching, .is-flashing),
+body.word-like-document-view-enabled .word-like-document-view-host-markdown :is(.markdown-preview-view, .markdown-reading-view) :is(.search-highlight, .obsidian-search-match-highlight, .is-searching, .is-flashing, .mod-highlighted) {
 	background: transparent !important;
 	background-color: transparent !important;
 	background-image: none !important;
@@ -125,8 +125,8 @@ body.word-like-document-view-enabled :is(.markdown-preview-view, .markdown-readi
 	mix-blend-mode: normal !important;
 }
 
-body.word-like-document-view-enabled .markdown-source-view.mod-cm6 :is(.cm-searching-current, .cm-searchMatch-selected, .obsidian-search-match-highlight.is-active, .is-searching-current, .is-flashing.mod-active),
-body.word-like-document-view-enabled :is(.markdown-preview-view, .markdown-reading-view) :is(.search-highlight.is-active, .obsidian-search-match-highlight.is-active, .is-searching-current, .mod-highlighted.is-active) {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 :is(.cm-searching-current, .cm-searchMatch-selected, .obsidian-search-match-highlight.is-active, .is-searching-current, .is-flashing.mod-active),
+body.word-like-document-view-enabled .word-like-document-view-host-markdown :is(.markdown-preview-view, .markdown-reading-view) :is(.search-highlight.is-active, .obsidian-search-match-highlight.is-active, .is-searching-current, .mod-highlighted.is-active) {
 	background: transparent !important;
 	background-color: transparent !important;
 	background-image: none !important;
@@ -138,7 +138,7 @@ body.word-like-document-view-enabled :is(.markdown-preview-view, .markdown-readi
 	mix-blend-mode: normal !important;
 }
 
-body.word-like-document-view-enabled .markdown-preview-view .search-highlight {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view .search-highlight {
 	background: transparent !important;
 	background-color: transparent !important;
 	box-shadow: none !important;
@@ -146,7 +146,7 @@ body.word-like-document-view-enabled .markdown-preview-view .search-highlight {
 	pointer-events: none !important;
 }
 
-body.word-like-document-view-enabled .markdown-preview-view .search-highlight > div {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view .search-highlight > div {
 	background: transparent !important;
 	background-color: transparent !important;
 	box-shadow: inset 0 -2px 0 var(--interactive-accent) !important;
@@ -154,7 +154,7 @@ body.word-like-document-view-enabled .markdown-preview-view .search-highlight > 
 	mix-blend-mode: normal !important;
 }
 
-body.word-like-document-view-enabled .markdown-preview-view .search-highlight > div.is-active {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view .search-highlight > div.is-active {
 	background: transparent !important;
 	background-color: transparent !important;
 	box-shadow: inset 0 -3px 0 var(--interactive-accent) !important;
