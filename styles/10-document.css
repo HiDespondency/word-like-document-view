@@ -1,0 +1,12 @@
+/* Document geometry and the page surface. */
+body.word-like-document-view-static-page {
+	--docxer-md-page-width: var(--docxer-md-page-width-base);
+	--docxer-md-page-min-height: var(--docxer-md-page-min-height-base);
+	--docxer-md-margin-top: var(--docxer-md-margin-top-base);
+	--docxer-md-margin-bottom: var(--docxer-md-margin-bottom-base);
+	--docxer-md-padding-top: var(--docxer-md-padding-top-base);
+	--docxer-md-padding-right: var(--docxer-md-padding-right-base);
+	--docxer-md-padding-bottom: var(--docxer-md-padding-bottom-base);
+	--docxer-md-padding-left: var(--docxer-md-padding-left-base);
+	--docxer-md-font-size: var(--docxer-md-font-size-base);
+}

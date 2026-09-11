@@ -1,0 +1,100 @@
+/* Callouts. */
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-rendered :is(.el-div, .el-callout, .el-blockquote):has(> :is(.callout, [data-callout])) {
+	display: block !important;
+	visibility: visible !important;
+	opacity: 1 !important;
+	max-height: none !important;
+	margin: 18px 0 20px !important;
+	overflow: visible !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown :is(.callout, [data-callout]) {
+	--text-normal: var(--docxer-md-callout-text) !important;
+	--text-muted: var(--docxer-md-muted) !important;
+	--text-faint: var(--docxer-md-muted) !important;
+	display: block !important;
+	visibility: visible !important;
+	opacity: 1 !important;
+	box-sizing: border-box !important;
+	min-height: 44px !important;
+	max-height: none !important;
+	margin: 18px 0 20px !important;
+	padding: 12px 14px 14px 24px !important;
+	overflow: visible !important;
+	mix-blend-mode: normal !important;
+	isolation: isolate !important;
+	background-color: rgba(var(--callout-color), var(--docxer-md-callout-bg-opacity)) !important;
+	border-left: 4px solid rgb(var(--callout-color)) !important;
+	border-radius: var(--callout-radius, 4px) !important;
+	color: var(--docxer-md-callout-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-callout-text) !important;
+	font-family: var(--font-text) !important;
+	font-size: var(--font-text-size) !important;
+	line-height: var(--line-height-normal) !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown :is(.callout[data-callout="warning"], [data-callout="warning"]) {
+	--callout-color: 225, 133, 24 !important;
+	background-color: #fff4e5 !important;
+	border-left-color: #e18518 !important;
+	color: #1f1f1f !important;
+	-webkit-text-fill-color: #1f1f1f !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-dark .word-like-document-view-host-markdown :is(.callout[data-callout="warning"], [data-callout="warning"]) {
+	--callout-color: 240, 166, 74 !important;
+	background-color: #35281c !important;
+	border-left-color: #f0a64a !important;
+	color: #ffffff !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .callout-title {
+	display: flex !important;
+	color: var(--docxer-md-callout-title) !important;
+	font-family: var(--font-text) !important;
+	font-weight: var(--font-semibold);
+	line-height: var(--line-height-normal) !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .callout-title-inner,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .callout-icon {
+	color: inherit !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .callout-content {
+	visibility: visible !important;
+	opacity: 1 !important;
+	color: var(--docxer-md-callout-text) !important;
+	font-family: var(--font-text) !important;
+	font-size: var(--font-text-size) !important;
+	line-height: var(--line-height-normal) !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-rendered :is(.callout-title, .callout-title-inner, .callout-icon, .callout-content, .callout-content *) {
+	visibility: visible !important;
+	opacity: 1 !important;
+	max-height: none !important;
+	overflow: visible !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .markdown-rendered :is(.callout-content, .callout-content *, .callout p, .callout li) {
+	color: #1f1f1f !important;
+	-webkit-text-fill-color: #1f1f1f !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .markdown-rendered :is(.callout-title, .callout-title-inner, .callout-icon) {
+	color: #e18518 !important;
+	-webkit-text-fill-color: #e18518 !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .callout-content p,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .callout-content li {
+	visibility: visible !important;
+	opacity: 1 !important;
+	color: var(--docxer-md-callout-text) !important;
+	font-family: var(--font-text) !important;
+	font-size: var(--font-text-size) !important;
+	line-height: var(--line-height-normal) !important;
+	margin-top: 0.75em;
+	margin-bottom: 0;
+}

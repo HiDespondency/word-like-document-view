@@ -67,6 +67,20 @@ const BODY_CLASS = Object.freeze({
 });
 const BODY_CLASSES = Object.values(BODY_CLASS);
 
+// DOM hooks used by the small Obsidian compatibility adapter.  The CSS can
+// target these stable plugin-owned hooks while this registry keeps Obsidian's
+// view selectors in one place for future updates.
+const VIEW_ADAPTER_SELECTOR = Object.freeze({
+	leaf: '.workspace-leaf-content',
+	markdown: '[data-type="markdown"]',
+	pdf: '[data-type="pdf"]'
+});
+const VIEW_HOST_CLASS = Object.freeze({
+	markdown: 'word-like-document-view-host-markdown',
+	pdf: 'word-like-document-view-host-pdf'
+});
+const VIEW_HOST_CLASSES = Object.values(VIEW_HOST_CLASS);
+
 const CSS_VARIABLES = [
 	'--docxer-md-canvas',
 	'--docxer-md-page',
@@ -132,10 +146,18 @@ class WordLikeDocumentViewPlugin extends Plugin {
 		this.refreshToolbar();
 		this.setupZoom();
 		this.setupGuillemets();
+		this.applyViewAdapters();
 
-		this.registerEvent(this.app.workspace.on('layout-change', () => this.queueApplySettings()));
-		this.registerEvent(this.app.workspace.on('layout-change', () => this.refreshToolbar()));
-		this.registerEvent(this.app.workspace.on('active-leaf-change', () => { this.queueApplySettings(); this.refreshToolbar(); }));
+		this.registerEvent(this.app.workspace.on('layout-change', () => {
+			this.applyViewAdapters();
+			this.queueApplySettings();
+			this.refreshToolbar();
+		}));
+		this.registerEvent(this.app.workspace.on('active-leaf-change', () => {
+			this.applyViewAdapters();
+			this.queueApplySettings();
+			this.refreshToolbar();
+		}));
 
 		this.addSettingTab(new WordLikeDocumentSettingTab(this.app, this));
 		this.addCommands();
@@ -143,6 +165,7 @@ class WordLikeDocumentViewPlugin extends Plugin {
 
 	onunload() {
 		this.removeToolbar();
+		this.clearViewAdapters();
 		if (this.applyFrame) {
 			window.cancelAnimationFrame(this.applyFrame);
 			this.applyFrame = null;
@@ -442,6 +465,19 @@ class WordLikeDocumentViewPlugin extends Plugin {
 
 	removeToolbar() { this.toolbarEl?.remove(); this.toolbarEl = null; }
 
+	applyViewAdapters() {
+		this.clearViewAdapters();
+		if (!this.settings?.enabled) return;
+		for (const leaf of document.querySelectorAll(VIEW_ADAPTER_SELECTOR.leaf)) {
+			if (leaf.matches(VIEW_ADAPTER_SELECTOR.markdown)) leaf.classList.add(VIEW_HOST_CLASS.markdown);
+			if (leaf.matches(VIEW_ADAPTER_SELECTOR.pdf)) leaf.classList.add(VIEW_HOST_CLASS.pdf);
+		}
+	}
+
+	clearViewAdapters() {
+		document.querySelectorAll(VIEW_ADAPTER_SELECTOR.leaf).forEach((leaf) => leaf.classList.remove(...VIEW_HOST_CLASSES));
+	}
+
 	refreshToolbar() {
 		this.removeToolbar();
 		if (!this.settings?.enabled || !this.settings.toolbarEnabled) return;
@@ -486,6 +522,7 @@ class WordLikeDocumentViewPlugin extends Plugin {
 		document.body.dataset.wordLikeDocumentViewVersion = PLUGIN_VERSION;
 		if (!this.settings.enabled) {
 			this.clearBodyState();
+			this.clearViewAdapters();
 			document.body.dataset.wordLikeDocumentViewVersion = PLUGIN_VERSION;
 			return;
 		}
@@ -501,6 +538,7 @@ class WordLikeDocumentViewPlugin extends Plugin {
 		document.body.classList.toggle(BODY_CLASS.environmentWord2000Blue, this.settings.environmentTheme === 'word2000Blue');
 
 		this.setCssVariables();
+		this.applyViewAdapters();
 		this.applyZoom();
 		if (this.settings.disableReadableLineLength) this.disableReadableLineLength();
 	}

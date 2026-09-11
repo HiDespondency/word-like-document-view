@@ -1,0 +1,142 @@
+/* Links and inline references. */
+/* Ссылки в светлом документе используют обычный синий цвет Word/Obsidian;
+   основной текст при этом остаётся чёрным. */
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown :is(
+	a.internal-link,
+	a.external-link,
+	.markdown-preview-view a,
+	.cm-link,
+	.cm-url,
+	.cm-hmd-internal-link,
+	.cm-hmd-footnote,
+	.cm-footref
+) {
+	color: var(--docxer-md-link) !important;
+	-webkit-text-fill-color: var(--docxer-md-link) !important;
+	font-family: var(--docxer-md-font) !important;
+	font-variant: normal !important;
+	font-feature-settings: normal !important;
+	text-decoration-color: currentColor !important;
+	opacity: 1 !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-dark .word-like-document-view-host-markdown :is(
+	a.internal-link,
+	a.external-link,
+	.markdown-preview-view a,
+	.cm-link,
+	.cm-url,
+	.cm-hmd-internal-link,
+	.cm-hmd-footnote,
+	.cm-footref
+) {
+	font-family: var(--docxer-md-font) !important;
+	font-variant: normal !important;
+	font-feature-settings: normal !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown :is(
+	a.internal-link:hover,
+	a.external-link:hover,
+	.cm-link:hover,
+	.cm-url:hover,
+	.cm-hmd-internal-link:hover,
+	.cm-hmd-footnote:hover,
+	.cm-footref:hover
+) {
+	color: var(--link-color-hover) !important;
+	-webkit-text-fill-color: var(--link-color-hover) !important;
+}
+
+/* Табличные ссылки остаются чёрными и при наведении, как в оформлении темы. */
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table a,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table a:hover,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget a,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget a:hover {
+	color: var(--docxer-md-table-link) !important;
+	-webkit-text-fill-color: var(--docxer-md-table-link) !important;
+	text-decoration-color: currentColor !important;
+}
+
+/* Теги — отдельные светло-голубые метки, а не обычные ссылки. */
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .metadata-container .multi-select-pill {
+	background: #e5f1ff !important;
+	background-color: #e5f1ff !important;
+	border: 1px solid #b7d5f5 !important;
+	border-radius: 999px !important;
+	color: #234f7d !important;
+	-webkit-text-fill-color: #234f7d !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .metadata-container .multi-select-pill-content {
+	color: #234f7d !important;
+	-webkit-text-fill-color: #234f7d !important;
+}
+
+/* Список вариантов для тегов не должен выпадать чёрным прямоугольником на
+   светлой странице. */
+body.word-like-document-view-enabled.word-like-document-view-document-light :is(.suggestion-container, .suggestion-container .suggestion-item) {
+	background: #f1f1f1 !important;
+	background-color: #f1f1f1 !important;
+	color: #202020 !important;
+	-webkit-text-fill-color: #202020 !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .suggestion-container {
+	border: 1px solid #bdbdbd !important;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18) !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .suggestion-container .suggestion-item.is-selected,
+body.word-like-document-view-enabled.word-like-document-view-document-light .suggestion-container .suggestion-item:hover {
+	background: #dcecff !important;
+	background-color: #dcecff !important;
+	color: #123f73 !important;
+	-webkit-text-fill-color: #123f73 !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-container .multi-select-pill {
+	box-sizing: border-box !important;
+	display: inline-flex !important;
+	flex: 0 0 auto !important;
+	align-items: center !important;
+	justify-content: flex-start !important;
+	gap: 6px !important;
+	height: 28px !important;
+	min-height: 28px !important;
+	padding: 4px 10px !important;
+	margin: 0 !important;
+	border-radius: 999px !important;
+	white-space: nowrap !important;
+	line-height: 18px !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-container .multi-select-pill-content {
+	display: inline-flex !important;
+	align-items: center !important;
+	min-height: 18px !important;
+	margin: 0 !important;
+	line-height: 18px !important;
+	white-space: nowrap !important;
+	overflow: visible !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-container .multi-select-pill :is(
+	.multi-select-pill-remove-button,
+	.clickable-icon,
+	button,
+	svg
+) {
+	box-sizing: border-box !important;
+	flex: 0 0 14px !important;
+	width: 14px !important;
+	height: 14px !important;
+	min-width: 14px !important;
+	min-height: 14px !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	line-height: 14px !important;
+}

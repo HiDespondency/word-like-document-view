@@ -1,0 +1,67 @@
+/* Design tokens are scoped to the plugin state. This keeps Word-like's
+   implementation details out of the rest of the vault when the plugin is
+   disabled, while the selectors below continue to inherit one stable set of
+   values from the document-view root. */
+body.word-like-document-view-enabled {
+	--docxer-md-canvas: #f3f3f3;
+	--docxer-md-page: #ffffff;
+	--docxer-md-ink: #000000;
+	--docxer-md-muted: #242424;
+	--docxer-md-faint: #555555;
+	--docxer-md-link: #0056c1;
+	--docxer-md-secondary-bg: #f6f6f6;
+	--docxer-md-alt-bg: #f2f2f2;
+	--docxer-md-border: #c8c8c8;
+	--docxer-md-callout-text: #1f1f1f;
+	--docxer-md-callout-title: rgb(var(--callout-color));
+	--docxer-md-callout-bg-opacity: 0.12;
+	--docxer-md-table-bg: var(--wrapped-table-bg, var(--docxer-md-page));
+	--docxer-md-table-text: var(--wrapped-table-text, var(--docxer-md-ink));
+	--docxer-md-table-border: var(--wrapped-table-border, var(--docxer-md-border));
+	--docxer-md-table-header-bg: var(--wrapped-table-header-bg, var(--docxer-md-secondary-bg));
+	--docxer-md-table-alt-bg: var(--wrapped-table-alt-bg, var(--docxer-md-alt-bg));
+	--docxer-md-table-link: var(--wrapped-table-link, var(--docxer-md-link));
+	--docxer-md-table-outer-border-width: var(--wrapped-table-outer-border-width, 1px);
+	--docxer-md-table-cell-border-width: var(--wrapped-table-cell-border-width, 1px);
+	--docxer-md-table-cell-padding: var(--wrapped-table-cell-padding, 7px 9px);
+	--docxer-md-cursor: #003f8f;
+	--docxer-md-selection-bg: #b8d7ff;
+	--docxer-md-selection-text: #000000;
+	--docxer-md-search-bg: #ffe066;
+	--docxer-md-search-text: #000000;
+	--docxer-md-search-border: #9a6a00;
+	--docxer-md-search-current-bg: #ffb000;
+	--docxer-md-search-current-text: #000000;
+	--docxer-md-search-preview-bg: rgba(255, 224, 102, 0.42);
+	--docxer-md-search-preview-current-bg: rgba(255, 176, 0, 0.46);
+	--docxer-md-toolbar-bg: var(--docxer-md-canvas);
+	--docxer-md-toolbar-text: #222222;
+	--docxer-md-toolbar-border: rgba(0, 0, 0, 0.18);
+	--docxer-md-toolbar-hover: rgba(0, 0, 0, 0.08);
+	--docxer-md-code-bg: #f2f2f2;
+	--docxer-md-code-text: #202020;
+	--docxer-md-code-border: #c8c8c8;
+	--word-like-zoom-factor: 1;
+	--docxer-md-zoom-factor: var(--word-like-zoom-factor);
+	--docxer-md-page-width-base: 800px;
+	--docxer-md-page-min-height-base: 1123px;
+	--docxer-md-margin-top-base: 28px;
+	--docxer-md-margin-bottom-base: 42px;
+	--docxer-md-padding-top-base: 82px;
+	--docxer-md-padding-right-base: 64px;
+	--docxer-md-padding-bottom-base: 82px;
+	--docxer-md-padding-left-base: 72px;
+	--docxer-md-font: "Times New Roman", Times, serif;
+	--docxer-md-font-size-base: 16px;
+	--docxer-md-line-height: 1.35;
+	--docxer-md-shadow: 0 0 8px rgba(0, 0, 0, 0.24);
+	--docxer-md-page-width: calc(var(--docxer-md-page-width-base) * var(--docxer-md-zoom-factor));
+	--docxer-md-page-min-height: calc(var(--docxer-md-page-min-height-base) * var(--docxer-md-zoom-factor));
+	--docxer-md-margin-top: calc(var(--docxer-md-margin-top-base) * var(--docxer-md-zoom-factor));
+	--docxer-md-margin-bottom: calc(var(--docxer-md-margin-bottom-base) * var(--docxer-md-zoom-factor));
+	--docxer-md-padding-top: calc(var(--docxer-md-padding-top-base) * var(--docxer-md-zoom-factor));
+	--docxer-md-padding-right: calc(var(--docxer-md-padding-right-base) * var(--docxer-md-zoom-factor));
+	--docxer-md-padding-bottom: calc(var(--docxer-md-padding-bottom-base) * var(--docxer-md-zoom-factor));
+	--docxer-md-padding-left: calc(var(--docxer-md-padding-left-base) * var(--docxer-md-zoom-factor));
+	--docxer-md-font-size: calc(var(--docxer-md-font-size-base) * var(--docxer-md-zoom-factor));
+}

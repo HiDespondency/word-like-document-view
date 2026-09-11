@@ -82,51 +82,51 @@ body.word-like-document-view-static-page {
 /* Native Obsidian surfaces are the compatibility boundary. The plugin keeps
    its rules under the Word-like body state instead of changing global theme
    selectors. */
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .view-content,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .view-content,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view {
 	background: var(--docxer-md-canvas) !important;
 }
 
 /* Полный просмотр PDF — отдельный встроенный вид Obsidian, поэтому его
    окружение нужно подключить к тем же параметрам Word-like вручную. */
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="pdf"] .view-content,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="pdf"] .pdf-viewer-container,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="pdf"] .pdf-viewer {
+body.word-like-document-view-enabled .word-like-document-view-host-pdf .view-content,
+body.word-like-document-view-enabled .word-like-document-view-host-pdf .pdf-viewer-container,
+body.word-like-document-view-enabled .word-like-document-view-host-pdf .pdf-viewer {
 	background: var(--docxer-md-canvas) !important;
 	background-color: var(--docxer-md-canvas) !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-reading-view,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-editor {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-reading-view,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-editor {
 	background: transparent !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view {
 	padding: 0 !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-scroller {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-scroller {
 	overflow: auto !important;
 	scrollbar-width: none;
 }
 
-body.word-like-document-view-enabled.word-like-document-view-show-inner-scrollbar .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-scroller {
+body.word-like-document-view-enabled.word-like-document-view-show-inner-scrollbar .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-scroller {
 	scrollbar-width: auto;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-scroller::-webkit-scrollbar {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-scroller::-webkit-scrollbar {
 	display: none;
 }
 
-body.word-like-document-view-enabled.word-like-document-view-show-inner-scrollbar .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-scroller::-webkit-scrollbar {
+body.word-like-document-view-enabled.word-like-document-view-show-inner-scrollbar .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-scroller::-webkit-scrollbar {
 	display: initial;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-sizer,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-reading-view .markdown-preview-sizer,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view > .markdown-preview-sizer {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-sizer,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-reading-view .markdown-preview-sizer,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view > .markdown-preview-sizer {
 	--background-primary: var(--docxer-md-page);
 	--background-secondary: var(--docxer-md-secondary-bg);
 	--background-primary-alt: var(--docxer-md-alt-bg);
@@ -162,8 +162,8 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	line-height: var(--docxer-md-line-height);
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-content,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-reading-view .markdown-preview-section:not(.markdown-preview-sizer) {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-content,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-reading-view .markdown-preview-section:not(.markdown-preview-sizer) {
 	padding: 0 !important;
 	background: transparent !important;
 	color: var(--docxer-md-ink);
@@ -243,7 +243,7 @@ body.word-like-document-view-enabled .markdown-preview-view .search-highlight > 
 
 /* Одно правило для Markdown-выделения в чтении и Live Preview. Цвет линии
    всегда совпадает с цветом текста; поисковый синий акцент сюда не попадает. */
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] :is(
+body.word-like-document-view-enabled .word-like-document-view-host-markdown :is(
 	.markdown-preview-view mark,
 	.markdown-reading-view mark,
 	.markdown-source-view.mod-cm6 .cm-highlight
@@ -257,7 +257,7 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 }
 
 /* Утолщённая линия сохраняется только у действительно жирного текста. */
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] :is(
+body.word-like-document-view-enabled .word-like-document-view-host-markdown :is(
 	.markdown-preview-view mark :is(strong, b),
 	.markdown-reading-view mark :is(strong, b),
 	.markdown-source-view.mod-cm6 .cm-highlight :is(.cm-strong, strong, b)
@@ -265,21 +265,21 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	box-shadow: inset 0 -2px 0 currentColor !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-sizer > div {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-sizer > div {
 	max-width: none !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-line,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view p,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view li {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-line,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view p,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view li {
 	color: var(--docxer-md-ink);
 	font-family: var(--docxer-md-font);
 	font-size: var(--docxer-md-font-size);
 	line-height: var(--docxer-md-line-height);
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view :is(code:not(pre code), .cm-inline-code),
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-inline-code {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view :is(code:not(pre code), .cm-inline-code),
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-inline-code {
 	background: var(--docxer-md-code-bg) !important;
 	background-color: var(--docxer-md-code-bg) !important;
 	color: var(--docxer-md-code-text) !important;
@@ -291,15 +291,15 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	font-size: 0.9em;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view pre,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view pre code {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view pre,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view pre code {
 	background: var(--docxer-md-alt-bg) !important;
 	background-color: var(--docxer-md-alt-bg) !important;
 	color: var(--docxer-md-ink) !important;
 	-webkit-text-fill-color: var(--docxer-md-ink) !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view pre code {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view pre code {
 	border: 0 !important;
 	border-radius: 0;
 	padding: 0;
@@ -307,26 +307,26 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	font-size: 0.9em;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-line {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-line {
 	padding-left: 0;
 	padding-right: 0;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view p {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view p {
 	margin: 0 0 12px;
 }
 
 /* Markdown tables: one component contract shared by Reading View and Live
    Preview. Obsidian's native table DOM is intentionally isolated here. */
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view .table-wrapper,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view .markdown-rendered-table {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view .table-wrapper,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view .markdown-rendered-table {
 	max-width: 100% !important;
 	overflow-x: auto !important;
 	overflow-y: visible !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget table {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget table {
 	width: 100% !important;
 	max-width: 100% !important;
 	margin: 14px 0 16px !important;
@@ -342,16 +342,16 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	line-height: 1.25 !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table colgroup,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table col {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table colgroup,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table col {
 	width: auto !important;
 	min-width: 0 !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view th,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view td,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget th,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget td {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view th,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view td,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget th,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget td {
 	padding: var(--docxer-md-table-cell-padding) !important;
 	border: var(--docxer-md-table-cell-border-width) solid var(--docxer-md-table-border) !important;
 	background: var(--docxer-md-table-bg) !important;
@@ -364,20 +364,20 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	overflow: visible !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view td:empty,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view th:empty {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view td:empty,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view th:empty {
 	min-width: 22px !important;
 	padding-left: 5px !important;
 	padding-right: 5px !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view td[colspan],
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view th[colspan] {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view td[colspan],
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view th[colspan] {
 	min-width: 110px !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view th,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget th {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view th,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget th {
 	background: var(--docxer-md-table-header-bg) !important;
 	color: var(--docxer-md-table-text) !important;
 	-webkit-text-fill-color: var(--docxer-md-table-text) !important;
@@ -385,72 +385,72 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	text-align: center !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table tr:nth-child(even) td,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget tr:nth-child(even) td {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table tr:nth-child(even) td,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget tr:nth-child(even) td {
 	background: var(--docxer-md-table-alt-bg) !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table strong,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table em,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget strong,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget em {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table strong,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table em,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget strong,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget em {
 	color: inherit !important;
 	-webkit-text-fill-color: currentColor !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view h1,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view h2,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view h3,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view h4,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view h5,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view h6,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .HyperMD-header {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h1,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h2,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h3,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h4,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h5,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h6,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .HyperMD-header {
 	color: var(--docxer-md-ink);
 	font-family: var(--docxer-md-font);
 	font-weight: 700;
 	line-height: 1.15;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view h1,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .HyperMD-header-1 {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h1,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .HyperMD-header-1 {
 	margin: 0 0 12px;
 	font-size: calc(22px * var(--docxer-md-zoom-factor));
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view h2,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .HyperMD-header-2 {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h2,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .HyperMD-header-2 {
 	margin: 20px 0 12px;
 	font-size: calc(19px * var(--docxer-md-zoom-factor));
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view h3,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .HyperMD-header-3 {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h3,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .HyperMD-header-3 {
 	margin: 16px 0 10px;
 	font-size: calc(17px * var(--docxer-md-zoom-factor));
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view strong,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-strong {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view strong,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-strong {
 	font-weight: 700;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-gutters {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-gutters {
 	background: transparent !important;
 	border-right: 0;
 	color: #777777;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-active {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-active {
 	background: rgba(0, 0, 0, 0.035);
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-embed-block,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .internal-embed,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .file-embed,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .markdown-embed,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .media-embed,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .image-embed,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .pdf-embed {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-embed-block,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .internal-embed,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .file-embed,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .markdown-embed,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .media-embed,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .image-embed,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .pdf-embed {
 	box-sizing: border-box;
 	max-width: 100% !important;
 	color: var(--text-normal);
@@ -460,7 +460,7 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 }
 
 /* Properties and tags. */
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-container {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-container {
 	--text-normal: var(--docxer-md-ink);
 	--text-muted: var(--docxer-md-muted);
 	--text-faint: var(--docxer-md-faint);
@@ -476,7 +476,7 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 
 /* Единая раскладка свойств: название и значение живут в двух
    стабильных колонках; значения тегов могут занимать несколько строк. */
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-property {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-property {
   display: grid !important;
   grid-template-columns: minmax(120px, 180px) minmax(0, 1fr) !important;
   column-gap: 16px !important;
@@ -485,13 +485,13 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
   max-width: 100% !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-property-key {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-property-key {
   min-width: 0 !important;
   max-width: 100% !important;
   overflow-wrap: anywhere !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-property-value {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-property-value {
   display: flex !important;
   flex: 1 1 auto !important;
   flex-wrap: wrap !important;
@@ -505,14 +505,14 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
   overflow: visible !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-property[data-property-key="теги"] {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-property[data-property-key="теги"] {
   height: auto !important;
   min-height: 46px !important;
   max-height: none !important;
   align-items: start !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-property[data-property-key="теги"] .multi-select-pill {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-property[data-property-key="теги"] .multi-select-pill {
   display: inline-flex !important;
   flex: 0 0 auto !important;
   max-width: 100% !important;
@@ -523,7 +523,7 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 /* Свойства на странице документа читаются как отдельные аккуратные поля.
    Светло-серый фон отделяет их от белого листа, а увеличенный отступ не
    даёт длинным значениям и тегам упираться в границы строки. */
-body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] .metadata-property {
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .metadata-property {
 	box-sizing: border-box !important;
 	min-height: 38px !important;
 	padding: 6px 8px !important;
@@ -534,37 +534,37 @@ body.word-like-document-view-enabled.word-like-document-view-document-light .wor
 }
 
 /* При наведении выделяется вся строка свойства, а не только её рамка. */
-body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] .metadata-property:hover,
-body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] .metadata-property:focus-within {
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .metadata-property:hover,
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .metadata-property:focus-within {
 	background: #f3f3f3 !important;
 	background-color: #f3f3f3 !important;
 	border-color: #b8b8b8 !important;
 	box-shadow: none !important;
 }
 
-body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] .metadata-property[data-property-key="теги"] {
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .metadata-property[data-property-key="теги"] {
 	min-height: 46px !important;
 	padding-top: 8px !important;
 	padding-bottom: 8px !important;
 }
 
-body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] .metadata-property :is(.metadata-property-key, .metadata-property-value, .metadata-property-key-input, .metadata-input-longtext, .metadata-input-text) {
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .metadata-property :is(.metadata-property-key, .metadata-property-value, .metadata-property-key-input, .metadata-input-longtext, .metadata-input-text) {
 	background: transparent !important;
 	background-color: transparent !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-container * {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-container * {
 	color: inherit;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-property-key,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-property-key:hover {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-property-key,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-property-key:hover {
 	color: var(--docxer-md-muted) !important;
 	background: #ffffff !important;
 	background-color: #ffffff !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] :is(.metadata-property-key-input, input.metadata-property-key-input, .metadata-property-key-input:hover, .metadata-property-key-input:focus) {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown :is(.metadata-property-key-input, input.metadata-property-key-input, .metadata-property-key-input:hover, .metadata-property-key-input:focus) {
 	background: #ffffff !important;
 	background-color: #ffffff !important;
 	color: var(--docxer-md-muted) !important;
@@ -572,9 +572,9 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	box-shadow: none !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-property-value,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-input-longtext,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-input-text {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-property-value,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-input-longtext,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-input-text {
 	color: var(--docxer-md-ink) !important;
 	-webkit-text-fill-color: var(--docxer-md-ink) !important;
 }
@@ -644,7 +644,7 @@ body.theme-dark.word-like-document-view-enabled .tooltip.mod-top .tooltip-arrow 
 /* Links and inline references. */
 /* Ссылки в светлом документе используют обычный синий цвет Word/Obsidian;
    основной текст при этом остаётся чёрным. */
-body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] :is(
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown :is(
 	a.internal-link,
 	a.external-link,
 	.markdown-preview-view a,
@@ -663,7 +663,7 @@ body.word-like-document-view-enabled.word-like-document-view-document-light .wor
 	opacity: 1 !important;
 }
 
-body.word-like-document-view-enabled.word-like-document-view-document-dark .workspace-leaf-content[data-type="markdown"] :is(
+body.word-like-document-view-enabled.word-like-document-view-document-dark .word-like-document-view-host-markdown :is(
 	a.internal-link,
 	a.external-link,
 	.markdown-preview-view a,
@@ -678,7 +678,7 @@ body.word-like-document-view-enabled.word-like-document-view-document-dark .work
 	font-feature-settings: normal !important;
 }
 
-body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] :is(
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown :is(
 	a.internal-link:hover,
 	a.external-link:hover,
 	.cm-link:hover,
@@ -692,17 +692,17 @@ body.word-like-document-view-enabled.word-like-document-view-document-light .wor
 }
 
 /* Табличные ссылки остаются чёрными и при наведении, как в оформлении темы. */
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table a,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table a:hover,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget a,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget a:hover {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table a,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table a:hover,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget a,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget a:hover {
 	color: var(--docxer-md-table-link) !important;
 	-webkit-text-fill-color: var(--docxer-md-table-link) !important;
 	text-decoration-color: currentColor !important;
 }
 
 /* Теги — отдельные светло-голубые метки, а не обычные ссылки. */
-body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] .metadata-container .multi-select-pill {
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .metadata-container .multi-select-pill {
 	background: #e5f1ff !important;
 	background-color: #e5f1ff !important;
 	border: 1px solid #b7d5f5 !important;
@@ -711,7 +711,7 @@ body.word-like-document-view-enabled.word-like-document-view-document-light .wor
 	-webkit-text-fill-color: #234f7d !important;
 }
 
-body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] .metadata-container .multi-select-pill-content {
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .metadata-container .multi-select-pill-content {
 	color: #234f7d !important;
 	-webkit-text-fill-color: #234f7d !important;
 }
@@ -738,7 +738,7 @@ body.word-like-document-view-enabled.word-like-document-view-document-light .sug
 	-webkit-text-fill-color: #123f73 !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-container .multi-select-pill {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-container .multi-select-pill {
 	box-sizing: border-box !important;
 	display: inline-flex !important;
 	flex: 0 0 auto !important;
@@ -754,7 +754,7 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	line-height: 18px !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-container .multi-select-pill-content {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-container .multi-select-pill-content {
 	display: inline-flex !important;
 	align-items: center !important;
 	min-height: 18px !important;
@@ -764,7 +764,7 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	overflow: visible !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .metadata-container .multi-select-pill :is(
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-container .multi-select-pill :is(
 	.multi-select-pill-remove-button,
 	.clickable-icon,
 	button,
@@ -785,7 +785,7 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 }
 
 /* Callouts. */
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-rendered :is(.el-div, .el-callout, .el-blockquote):has(> :is(.callout, [data-callout])) {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-rendered :is(.el-div, .el-callout, .el-blockquote):has(> :is(.callout, [data-callout])) {
 	display: block !important;
 	visibility: visible !important;
 	opacity: 1 !important;
@@ -794,7 +794,7 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	overflow: visible !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] :is(.callout, [data-callout]) {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown :is(.callout, [data-callout]) {
 	--text-normal: var(--docxer-md-callout-text) !important;
 	--text-muted: var(--docxer-md-muted) !important;
 	--text-faint: var(--docxer-md-muted) !important;
@@ -819,7 +819,7 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	line-height: var(--line-height-normal) !important;
 }
 
-body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] :is(.callout[data-callout="warning"], [data-callout="warning"]) {
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown :is(.callout[data-callout="warning"], [data-callout="warning"]) {
 	--callout-color: 225, 133, 24 !important;
 	background-color: #fff4e5 !important;
 	border-left-color: #e18518 !important;
@@ -827,14 +827,14 @@ body.word-like-document-view-enabled.word-like-document-view-document-light .wor
 	-webkit-text-fill-color: #1f1f1f !important;
 }
 
-body.word-like-document-view-enabled.word-like-document-view-document-dark .workspace-leaf-content[data-type="markdown"] :is(.callout[data-callout="warning"], [data-callout="warning"]) {
+body.word-like-document-view-enabled.word-like-document-view-document-dark .word-like-document-view-host-markdown :is(.callout[data-callout="warning"], [data-callout="warning"]) {
 	--callout-color: 240, 166, 74 !important;
 	background-color: #35281c !important;
 	border-left-color: #f0a64a !important;
 	color: #ffffff !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .callout-title {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .callout-title {
 	display: flex !important;
 	color: var(--docxer-md-callout-title) !important;
 	font-family: var(--font-text) !important;
@@ -842,12 +842,12 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	line-height: var(--line-height-normal) !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .callout-title-inner,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .callout-icon {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .callout-title-inner,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .callout-icon {
 	color: inherit !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .callout-content {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .callout-content {
 	visibility: visible !important;
 	opacity: 1 !important;
 	color: var(--docxer-md-callout-text) !important;
@@ -856,25 +856,25 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	line-height: var(--line-height-normal) !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-rendered :is(.callout-title, .callout-title-inner, .callout-icon, .callout-content, .callout-content *) {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-rendered :is(.callout-title, .callout-title-inner, .callout-icon, .callout-content, .callout-content *) {
 	visibility: visible !important;
 	opacity: 1 !important;
 	max-height: none !important;
 	overflow: visible !important;
 }
 
-body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] .markdown-rendered :is(.callout-content, .callout-content *, .callout p, .callout li) {
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .markdown-rendered :is(.callout-content, .callout-content *, .callout p, .callout li) {
 	color: #1f1f1f !important;
 	-webkit-text-fill-color: #1f1f1f !important;
 }
 
-body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] .markdown-rendered :is(.callout-title, .callout-title-inner, .callout-icon) {
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .markdown-rendered :is(.callout-title, .callout-title-inner, .callout-icon) {
 	color: #e18518 !important;
 	-webkit-text-fill-color: #e18518 !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .callout-content p,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .callout-content li {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .callout-content p,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .callout-content li {
 	visibility: visible !important;
 	opacity: 1 !important;
 	color: var(--docxer-md-callout-text) !important;
@@ -887,11 +887,11 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 
 /* Theme compatibility and surrounding workspace chrome. These are the
    deliberate override layer for native Obsidian surfaces. */
-body.theme-dark.word-like-document-view-compat-dark .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-link,
-body.theme-dark.word-like-document-view-compat-dark .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-url,
-body.theme-dark.word-like-document-view-compat-dark .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-hmd-internal-link,
-body.theme-dark.word-like-document-view-compat-dark .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-hmd-footnote,
-body.theme-dark.word-like-document-view-compat-dark .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-footref {
+body.theme-dark.word-like-document-view-compat-dark .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-link,
+body.theme-dark.word-like-document-view-compat-dark .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-url,
+body.theme-dark.word-like-document-view-compat-dark .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-hmd-internal-link,
+body.theme-dark.word-like-document-view-compat-dark .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-hmd-footnote,
+body.theme-dark.word-like-document-view-compat-dark .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-footref {
 	color: var(--link-color) !important;
 	-webkit-text-fill-color: var(--link-color) !important;
 	opacity: 1 !important;
@@ -1127,8 +1127,8 @@ body.word-like-document-view-enabled:is(.word-like-document-view-env-focus-dark,
 
 /* Tables inherit Obsidian's code background with higher specificity. Keep
    inline command labels readable on the Word-like document page as well. */
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table code,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table code * {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table code,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table code * {
 	background: var(--docxer-md-code-bg) !important;
 	background-color: var(--docxer-md-code-bg) !important;
 	color: var(--docxer-md-code-text) !important;
@@ -1139,28 +1139,28 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 /* Шестиколоночный реестр источников шире листа намеренно: контейнер
    прокручивается по горизонтали, поэтому содержимое последнего столбца не
    сжимается в нечитаемые узкие буквы. */
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view .table-wrapper:has(table th:nth-child(6)),
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view .markdown-rendered-table:has(table th:nth-child(6)) {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view .table-wrapper:has(table th:nth-child(6)),
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view .markdown-rendered-table:has(table th:nth-child(6)) {
 	overflow-x: auto !important;
 	overflow-y: visible !important;
 	scrollbar-width: auto !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view .table-wrapper:has(table th:nth-child(6))::-webkit-scrollbar,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view .markdown-rendered-table:has(table th:nth-child(6))::-webkit-scrollbar {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view .table-wrapper:has(table th:nth-child(6))::-webkit-scrollbar,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view .markdown-rendered-table:has(table th:nth-child(6))::-webkit-scrollbar {
 	display: initial !important;
 	height: 10px !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-preview-view table:has(th:nth-child(6)) {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table:has(th:nth-child(6)) {
 	width: max-content !important;
 	min-width: 1080px !important;
 	max-width: none !important;
 	table-layout: auto !important;
 }
 
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget table code,
-body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown"] .markdown-source-view.mod-cm6 .cm-table-widget table code * {
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget table code,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget table code * {
 	background: var(--docxer-md-code-bg) !important;
 	background-color: var(--docxer-md-code-bg) !important;
 	color: var(--docxer-md-code-text) !important;
@@ -1174,7 +1174,7 @@ body.word-like-document-view-enabled .workspace-leaf-content[data-type="markdown
 	vertical-align: baseline;
 }
 
-body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] :is(.markdown-preview-view, .markdown-source-view.mod-cm6) blockquote {
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown :is(.markdown-preview-view, .markdown-source-view.mod-cm6) blockquote {
 	border-left: 3px solid #000000 !important;
 	background: transparent !important;
 	color: var(--docxer-md-ink) !important;
@@ -1182,7 +1182,7 @@ body.word-like-document-view-enabled.word-like-document-view-document-light .wor
 	padding-left: 16px !important;
 }
 
-body.word-like-document-view-enabled.word-like-document-view-document-dark .workspace-leaf-content[data-type="markdown"] :is(.markdown-preview-view, .markdown-source-view.mod-cm6) blockquote {
+body.word-like-document-view-enabled.word-like-document-view-document-dark .word-like-document-view-host-markdown :is(.markdown-preview-view, .markdown-source-view.mod-cm6) blockquote {
 	border-left: 3px solid #ffffff !important;
 	background: transparent !important;
 	color: var(--docxer-md-ink) !important;
@@ -1190,6 +1190,6 @@ body.word-like-document-view-enabled.word-like-document-view-document-dark .work
 	padding-left: 16px !important;
 }
 
-body.word-like-document-view-enabled.word-like-document-view-document-light .workspace-leaf-content[data-type="markdown"] :is(.markdown-preview-view, .markdown-rendered) blockquote {
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown :is(.markdown-preview-view, .markdown-rendered) blockquote {
 	border-left: 3px solid #000000 !important;
 }

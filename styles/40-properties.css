@@ -1,0 +1,119 @@
+/* Properties and tags. */
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-container {
+	--text-normal: var(--docxer-md-ink);
+	--text-muted: var(--docxer-md-muted);
+	--text-faint: var(--docxer-md-faint);
+	--metadata-label-text-color: var(--docxer-md-muted);
+	--metadata-input-text-color: var(--docxer-md-ink);
+	--metadata-label-background-active: #ffffff;
+	--metadata-input-background-active: #ffffff;
+	--metadata-background: transparent;
+	--metadata-property-background: transparent;
+	color: var(--docxer-md-ink);
+	font-family: var(--font-interface);
+}
+
+/* Единая раскладка свойств: название и значение живут в двух
+   стабильных колонках; значения тегов могут занимать несколько строк. */
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-property {
+  display: grid !important;
+  grid-template-columns: minmax(120px, 180px) minmax(0, 1fr) !important;
+  column-gap: 16px !important;
+  align-items: start !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-property-key {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow-wrap: anywhere !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-property-value {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  align-content: flex-start !important;
+  gap: 5px 6px !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  white-space: normal !important;
+  overflow: visible !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-property[data-property-key="теги"] {
+  height: auto !important;
+  min-height: 46px !important;
+  max-height: none !important;
+  align-items: start !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-property[data-property-key="теги"] .multi-select-pill {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+}
+
+/* Свойства на странице документа читаются как отдельные аккуратные поля.
+   Светло-серый фон отделяет их от белого листа, а увеличенный отступ не
+   даёт длинным значениям и тегам упираться в границы строки. */
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .metadata-property {
+	box-sizing: border-box !important;
+	min-height: 38px !important;
+	padding: 6px 8px !important;
+	background: #ffffff !important;
+	background-color: #ffffff !important;
+	border: 1px solid #d0d0d0 !important;
+	border-radius: 6px !important;
+}
+
+/* При наведении выделяется вся строка свойства, а не только её рамка. */
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .metadata-property:hover,
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .metadata-property:focus-within {
+	background: #f3f3f3 !important;
+	background-color: #f3f3f3 !important;
+	border-color: #b8b8b8 !important;
+	box-shadow: none !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .metadata-property[data-property-key="теги"] {
+	min-height: 46px !important;
+	padding-top: 8px !important;
+	padding-bottom: 8px !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown .metadata-property :is(.metadata-property-key, .metadata-property-value, .metadata-property-key-input, .metadata-input-longtext, .metadata-input-text) {
+	background: transparent !important;
+	background-color: transparent !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-container * {
+	color: inherit;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-property-key,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-property-key:hover {
+	color: var(--docxer-md-muted) !important;
+	background: #ffffff !important;
+	background-color: #ffffff !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown :is(.metadata-property-key-input, input.metadata-property-key-input, .metadata-property-key-input:hover, .metadata-property-key-input:focus) {
+	background: #ffffff !important;
+	background-color: #ffffff !important;
+	color: var(--docxer-md-muted) !important;
+	-webkit-text-fill-color: var(--docxer-md-muted) !important;
+	box-shadow: none !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-property-value,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-input-longtext,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .metadata-input-text {
+	color: var(--docxer-md-ink) !important;
+	-webkit-text-fill-color: var(--docxer-md-ink) !important;
+}

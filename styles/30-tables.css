@@ -1,0 +1,142 @@
+/* Markdown tables: one component contract shared by Reading View and Live
+   Preview. Obsidian's native table DOM is intentionally isolated here. */
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view .table-wrapper,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view .markdown-rendered-table {
+	max-width: 100% !important;
+	overflow-x: auto !important;
+	overflow-y: visible !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget table {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin: 14px 0 16px !important;
+	table-layout: auto !important;
+	border-collapse: collapse !important;
+	border: var(--docxer-md-table-outer-border-width) solid var(--docxer-md-table-border) !important;
+	box-shadow: 0 0 0 1px var(--docxer-md-table-border) !important;
+	background: var(--docxer-md-table-bg) !important;
+	color: var(--docxer-md-table-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-table-text) !important;
+	font-family: var(--docxer-md-font) !important;
+	font-size: calc(var(--docxer-md-font-size) * 0.92) !important;
+	line-height: 1.25 !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table colgroup,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table col {
+	width: auto !important;
+	min-width: 0 !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view th,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view td,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget th,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget td {
+	padding: var(--docxer-md-table-cell-padding) !important;
+	border: var(--docxer-md-table-cell-border-width) solid var(--docxer-md-table-border) !important;
+	background: var(--docxer-md-table-bg) !important;
+	color: var(--docxer-md-table-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-table-text) !important;
+	vertical-align: top !important;
+	white-space: normal !important;
+	word-break: normal !important;
+	overflow-wrap: break-word !important;
+	overflow: visible !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view td:empty,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view th:empty {
+	min-width: 22px !important;
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view td[colspan],
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view th[colspan] {
+	min-width: 110px !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view th,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget th {
+	background: var(--docxer-md-table-header-bg) !important;
+	color: var(--docxer-md-table-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-table-text) !important;
+	font-weight: 700 !important;
+	text-align: center !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table tr:nth-child(even) td,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget tr:nth-child(even) td {
+	background: var(--docxer-md-table-alt-bg) !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table strong,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table em,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget strong,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget em {
+	color: inherit !important;
+	-webkit-text-fill-color: currentColor !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h1,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h2,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h3,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h4,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h5,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h6,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .HyperMD-header {
+	color: var(--docxer-md-ink);
+	font-family: var(--docxer-md-font);
+	font-weight: 700;
+	line-height: 1.15;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h1,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .HyperMD-header-1 {
+	margin: 0 0 12px;
+	font-size: calc(22px * var(--docxer-md-zoom-factor));
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h2,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .HyperMD-header-2 {
+	margin: 20px 0 12px;
+	font-size: calc(19px * var(--docxer-md-zoom-factor));
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view h3,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .HyperMD-header-3 {
+	margin: 16px 0 10px;
+	font-size: calc(17px * var(--docxer-md-zoom-factor));
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view strong,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-strong {
+	font-weight: 700;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-gutters {
+	background: transparent !important;
+	border-right: 0;
+	color: #777777;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-active {
+	background: rgba(0, 0, 0, 0.035);
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-embed-block,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .internal-embed,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .file-embed,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .markdown-embed,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .media-embed,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .image-embed,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .pdf-embed {
+	box-sizing: border-box;
+	max-width: 100% !important;
+	color: var(--text-normal);
+	font-family: var(--font-interface);
+	font-size: var(--font-ui-medium);
+	line-height: var(--line-height-normal);
+}

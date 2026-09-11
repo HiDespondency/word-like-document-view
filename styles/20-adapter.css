@@ -1,0 +1,236 @@
+/* Native Obsidian surfaces are the compatibility boundary. The plugin keeps
+   its rules under the Word-like body state instead of changing global theme
+   selectors. */
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .view-content,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view {
+	background: var(--docxer-md-canvas) !important;
+}
+
+/* Полный просмотр PDF — отдельный встроенный вид Obsidian, поэтому его
+   окружение нужно подключить к тем же параметрам Word-like вручную. */
+body.word-like-document-view-enabled .word-like-document-view-host-pdf .view-content,
+body.word-like-document-view-enabled .word-like-document-view-host-pdf .pdf-viewer-container,
+body.word-like-document-view-enabled .word-like-document-view-host-pdf .pdf-viewer {
+	background: var(--docxer-md-canvas) !important;
+	background-color: var(--docxer-md-canvas) !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-reading-view,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-editor {
+	background: transparent !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view {
+	padding: 0 !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-scroller {
+	overflow: auto !important;
+	scrollbar-width: none;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-show-inner-scrollbar .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-scroller {
+	scrollbar-width: auto;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-scroller::-webkit-scrollbar {
+	display: none;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-show-inner-scrollbar .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-scroller::-webkit-scrollbar {
+	display: initial;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-sizer,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-reading-view .markdown-preview-sizer,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view > .markdown-preview-sizer {
+	--background-primary: var(--docxer-md-page);
+	--background-secondary: var(--docxer-md-secondary-bg);
+	--background-primary-alt: var(--docxer-md-alt-bg);
+	--background-modifier-border: var(--docxer-md-border);
+	--text-normal: var(--docxer-md-ink);
+	--text-muted: var(--docxer-md-muted);
+	--text-faint: var(--docxer-md-faint);
+	--text-accent: var(--docxer-md-link);
+	--link-color: var(--docxer-md-link);
+	--link-color-hover: #003f8f;
+	--text-selection: var(--docxer-md-selection-bg);
+	--text-highlight-bg: var(--docxer-md-search-bg);
+	--text-highlight-bg-active: var(--docxer-md-search-current-bg);
+	--search-result-background: var(--docxer-md-search-bg);
+	--search-result-background-current: var(--docxer-md-search-current-bg);
+	--background-modifier-highlight: var(--docxer-md-search-bg);
+	--inline-title-color: var(--docxer-md-ink);
+	box-sizing: border-box;
+	width: min(var(--docxer-md-page-width), calc(100% - 8px)) !important;
+	max-width: min(var(--docxer-md-page-width), calc(100% - 8px)) !important;
+	min-height: var(--docxer-md-page-min-height);
+	margin: var(--docxer-md-margin-top) auto var(--docxer-md-margin-bottom) !important;
+	padding:
+		var(--docxer-md-padding-top)
+		var(--docxer-md-padding-right)
+		var(--docxer-md-padding-bottom)
+		var(--docxer-md-padding-left) !important;
+	background: var(--docxer-md-page) !important;
+	box-shadow: var(--docxer-md-shadow);
+	color: var(--docxer-md-ink);
+	font-family: var(--docxer-md-font);
+	font-size: var(--docxer-md-font-size);
+	line-height: var(--docxer-md-line-height);
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-content,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-reading-view .markdown-preview-section:not(.markdown-preview-sizer) {
+	padding: 0 !important;
+	background: transparent !important;
+	color: var(--docxer-md-ink);
+	font-family: var(--docxer-md-font);
+	font-size: var(--docxer-md-font-size);
+	line-height: var(--docxer-md-line-height);
+}
+
+body.word-like-document-view-enabled .markdown-source-view.mod-cm6 .cm-content {
+	caret-color: var(--docxer-md-cursor) !important;
+}
+
+body.word-like-document-view-enabled .markdown-source-view.mod-cm6 :is(.cm-cursor, .cm-dropCursor, .cm-fat-cursor) {
+	border-left-color: var(--docxer-md-cursor) !important;
+	border-left-width: 2px !important;
+}
+
+body.word-like-document-view-enabled .markdown-source-view.mod-cm6 .cm-selectionBackground {
+	background: var(--docxer-md-selection-bg) !important;
+}
+
+body.word-like-document-view-enabled .markdown-source-view.mod-cm6 .cm-content ::selection,
+body.word-like-document-view-enabled .markdown-preview-view ::selection {
+	background: var(--docxer-md-selection-bg) !important;
+	color: var(--docxer-md-selection-text) !important;
+}
+
+/* Поисковые совпадения получают акцентную линию; Markdown-выделение
+   ==...== оформляется отдельным правилом ниже. */
+body.word-like-document-view-enabled .markdown-source-view.mod-cm6 :is(.cm-searching, .cm-searchMatch, .cm-selectionMatch, .obsidian-search-match-highlight, .is-searching, .is-flashing),
+body.word-like-document-view-enabled :is(.markdown-preview-view, .markdown-reading-view) :is(.search-highlight, .obsidian-search-match-highlight, .is-searching, .is-flashing, .mod-highlighted) {
+	background: transparent !important;
+	background-color: transparent !important;
+	background-image: none !important;
+	box-shadow: inset 0 -2px 0 var(--interactive-accent) !important;
+	color: inherit !important;
+	-webkit-text-fill-color: currentColor !important;
+	outline: 0 !important;
+	text-shadow: none !important;
+	mix-blend-mode: normal !important;
+}
+
+body.word-like-document-view-enabled .markdown-source-view.mod-cm6 :is(.cm-searching-current, .cm-searchMatch-selected, .obsidian-search-match-highlight.is-active, .is-searching-current, .is-flashing.mod-active),
+body.word-like-document-view-enabled :is(.markdown-preview-view, .markdown-reading-view) :is(.search-highlight.is-active, .obsidian-search-match-highlight.is-active, .is-searching-current, .mod-highlighted.is-active) {
+	background: transparent !important;
+	background-color: transparent !important;
+	background-image: none !important;
+	box-shadow: inset 0 -3px 0 var(--interactive-accent) !important;
+	color: inherit !important;
+	-webkit-text-fill-color: currentColor !important;
+	outline: 0 !important;
+	text-shadow: none !important;
+	mix-blend-mode: normal !important;
+}
+
+body.word-like-document-view-enabled .markdown-preview-view .search-highlight {
+	background: transparent !important;
+	background-color: transparent !important;
+	box-shadow: none !important;
+	outline: 0 !important;
+	pointer-events: none !important;
+}
+
+body.word-like-document-view-enabled .markdown-preview-view .search-highlight > div {
+	background: transparent !important;
+	background-color: transparent !important;
+	box-shadow: inset 0 -2px 0 var(--interactive-accent) !important;
+	opacity: 1 !important;
+	mix-blend-mode: normal !important;
+}
+
+body.word-like-document-view-enabled .markdown-preview-view .search-highlight > div.is-active {
+	background: transparent !important;
+	background-color: transparent !important;
+	box-shadow: inset 0 -3px 0 var(--interactive-accent) !important;
+}
+
+/* Одно правило для Markdown-выделения в чтении и Live Preview. Цвет линии
+   всегда совпадает с цветом текста; поисковый синий акцент сюда не попадает. */
+body.word-like-document-view-enabled .word-like-document-view-host-markdown :is(
+	.markdown-preview-view mark,
+	.markdown-reading-view mark,
+	.markdown-source-view.mod-cm6 .cm-highlight
+) {
+	background: transparent !important;
+	background-color: transparent !important;
+	box-shadow: inset 0 -1px 0 currentColor !important;
+	color: var(--docxer-md-ink) !important;
+	-webkit-text-fill-color: var(--docxer-md-ink) !important;
+	text-decoration-color: currentColor !important;
+}
+
+/* Утолщённая линия сохраняется только у действительно жирного текста. */
+body.word-like-document-view-enabled .word-like-document-view-host-markdown :is(
+	.markdown-preview-view mark :is(strong, b),
+	.markdown-reading-view mark :is(strong, b),
+	.markdown-source-view.mod-cm6 .cm-highlight :is(.cm-strong, strong, b)
+) {
+	box-shadow: inset 0 -2px 0 currentColor !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-sizer > div {
+	max-width: none !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-line,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view p,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view li {
+	color: var(--docxer-md-ink);
+	font-family: var(--docxer-md-font);
+	font-size: var(--docxer-md-font-size);
+	line-height: var(--docxer-md-line-height);
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view :is(code:not(pre code), .cm-inline-code),
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-inline-code {
+	background: var(--docxer-md-code-bg) !important;
+	background-color: var(--docxer-md-code-bg) !important;
+	color: var(--docxer-md-code-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-code-text) !important;
+	border: 1px solid var(--docxer-md-code-border) !important;
+	border-radius: 3px;
+	padding: 0.08em 0.28em;
+	font-family: "Cascadia Code", "Consolas", monospace;
+	font-size: 0.9em;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view pre,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view pre code {
+	background: var(--docxer-md-alt-bg) !important;
+	background-color: var(--docxer-md-alt-bg) !important;
+	color: var(--docxer-md-ink) !important;
+	-webkit-text-fill-color: var(--docxer-md-ink) !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view pre code {
+	border: 0 !important;
+	border-radius: 0;
+	padding: 0;
+	font-family: "Cascadia Code", "Consolas", monospace;
+	font-size: 0.9em;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-line {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view p {
+	margin: 0 0 12px;
+}

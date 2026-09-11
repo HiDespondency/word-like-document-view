@@ -1,0 +1,180 @@
+/* Theme compatibility and surrounding workspace chrome. These are the
+   deliberate override layer for native Obsidian surfaces. */
+body.theme-dark.word-like-document-view-compat-dark .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-link,
+body.theme-dark.word-like-document-view-compat-dark .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-url,
+body.theme-dark.word-like-document-view-compat-dark .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-hmd-internal-link,
+body.theme-dark.word-like-document-view-compat-dark .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-hmd-footnote,
+body.theme-dark.word-like-document-view-compat-dark .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-footref {
+	color: var(--link-color) !important;
+	-webkit-text-fill-color: var(--link-color) !important;
+	opacity: 1 !important;
+	text-decoration-color: var(--link-color) !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light #__C_scrollToTop,
+body.word-like-document-view-enabled.word-like-document-view-document-light #__C_scrollToBottom,
+body.word-like-document-view-enabled.word-like-document-view-document-light #__C_scrollToCursor {
+	background: #ffffff !important;
+	border: 1px solid #8a8a8a !important;
+	border-radius: 6px !important;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.10) !important;
+	color: #222222 !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light #__C_scrollToTop .buttonItem,
+body.word-like-document-view-enabled.word-like-document-view-document-light #__C_scrollToBottom .buttonItem,
+body.word-like-document-view-enabled.word-like-document-view-document-light #__C_scrollToCursor .buttonItem {
+	background-color: #ffffff !important;
+	color: #222222 !important;
+	-webkit-text-fill-color: #222222 !important;
+}
+
+body.word-like-document-view-enabled #editingToolbarModalBar,
+body.word-like-document-view-enabled #editingToolbarModalBar .subitem {
+	background: var(--docxer-md-toolbar-bg) !important;
+	border-color: var(--docxer-md-toolbar-border) !important;
+	color: var(--docxer-md-toolbar-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-toolbar-text) !important;
+}
+
+body.word-like-document-view-enabled #editingToolbarModalBar :is(button, .editingToolbarCommandItem, .menu-item) {
+	background-color: transparent !important;
+	color: var(--docxer-md-toolbar-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-toolbar-text) !important;
+}
+
+body.word-like-document-view-enabled #editingToolbarModalBar :is(button:hover, .editingToolbarCommandItem:hover, .menu-item:hover) {
+	background-color: var(--docxer-md-toolbar-hover) !important;
+}
+
+body.word-like-document-view-enabled #editingToolbarModalBar :is(svg, svg *) {
+	color: var(--docxer-md-toolbar-text) !important;
+	stroke: currentColor !important;
+}
+
+body.word-like-document-view-enabled:is(.word-like-document-view-env-focus-dark, .word-like-document-view-env-word2019-blue, .word-like-document-view-env-word2000-blue) {
+	--docxer-md-env-top-active-bg: var(--docxer-md-env-hover);
+	--docxer-md-env-top-active-text: var(--docxer-md-env-text);
+	--docxer-md-env-panel-active-bg: var(--docxer-md-env-hover);
+	--docxer-md-env-panel-active-text: var(--docxer-md-env-muted);
+	--docxer-md-env-action-text: var(--docxer-md-env-muted);
+}
+
+body.word-like-document-view-enabled.word-like-document-view-env-focus-dark {
+	--docxer-md-canvas: #565656;
+	--docxer-md-env-top: #303030;
+	--docxer-md-env-panel: #424242;
+	--docxer-md-env-border: #343434;
+	--docxer-md-env-text: #f5f5f5;
+	--docxer-md-env-muted: #d8d8d8;
+	--docxer-md-env-hover: #636363;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-env-word2019-blue {
+	--docxer-md-canvas: #49627f;
+	--docxer-md-env-top: #0056c1;
+	--docxer-md-env-panel: #17365d;
+	--docxer-md-env-border: #0b2b55;
+	--docxer-md-env-text: #ffffff;
+	--docxer-md-env-muted: #e7f0ff;
+	--docxer-md-env-hover: #2f5f9f;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-env-word2000-blue {
+	--docxer-md-canvas: #808080;
+	--docxer-md-env-top: #0a246a;
+	--docxer-md-env-panel: #d4d0c8;
+	--docxer-md-env-border: #808080;
+	--docxer-md-env-text: #ffffff;
+	--docxer-md-env-muted: #000000;
+	--docxer-md-env-hover: #b6bdd2;
+	--docxer-md-env-top-active-text: #000000;
+	--docxer-md-env-panel-active-bg: #c6c2ba;
+	--docxer-md-env-panel-active-text: #000000;
+	--docxer-md-env-action-text: #111111;
+}
+
+body.word-like-document-view-enabled:is(.word-like-document-view-env-focus-dark, .word-like-document-view-env-word2019-blue, .word-like-document-view-env-word2000-blue) .titlebar {
+	background: transparent !important;
+}
+
+body.word-like-document-view-enabled:is(.word-like-document-view-env-focus-dark, .word-like-document-view-env-word2019-blue, .word-like-document-view-env-word2000-blue)
+:is(.titlebar-button-container, .workspace-ribbon, .workspace-tab-header-container, .sidebar-toggle-button) {
+	background: var(--docxer-md-env-top) !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+	color: var(--docxer-md-env-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-env-text) !important;
+}
+
+body.word-like-document-view-enabled:is(.word-like-document-view-env-focus-dark, .word-like-document-view-env-word2019-blue, .word-like-document-view-env-word2000-blue)
+:is(.titlebar-button, .titlebar-button *, .workspace-ribbon .clickable-icon, .workspace-ribbon .clickable-icon *, .workspace-tab-header-container .clickable-icon, .workspace-tab-header-container .clickable-icon *, .workspace-tab-header-container .workspace-tab-header-inner, .workspace-tab-header-container .workspace-tab-header-inner *, .sidebar-toggle-button, .sidebar-toggle-button *) {
+	color: var(--docxer-md-env-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-env-text) !important;
+	stroke: currentColor !important;
+}
+
+body.word-like-document-view-enabled:is(.word-like-document-view-env-focus-dark, .word-like-document-view-env-word2019-blue, .word-like-document-view-env-word2000-blue)
+:is(.titlebar-button:hover, .workspace-ribbon .clickable-icon:hover, .workspace-tab-header:hover, .sidebar-toggle-button:hover) {
+	background-color: var(--docxer-md-env-hover) !important;
+}
+
+body.word-like-document-view-enabled:is(.word-like-document-view-env-focus-dark, .word-like-document-view-env-word2019-blue, .word-like-document-view-env-word2000-blue)
+:is(.mod-left-split, .mod-right-split)
+:is(.workspace-tabs, .workspace-leaf, .workspace-leaf-content, .view-content, .nav-files-container, .workspace-sidedock-vault-profile) {
+	background: var(--docxer-md-env-panel) !important;
+	border-color: var(--docxer-md-env-border) !important;
+	color: var(--docxer-md-env-muted) !important;
+}
+
+body.word-like-document-view-enabled:is(.word-like-document-view-env-focus-dark, .word-like-document-view-env-word2019-blue, .word-like-document-view-env-word2000-blue)
+:is(.mod-left-split, .mod-right-split)
+:is(.tree-item-self, .tree-item-inner, .nav-file-title, .nav-folder-title, .nav-file-title-content, .nav-folder-title-content, .nav-folder-collapse-indicator, .collapse-icon, .tree-item-icon, .nav-file-tag, .backlink-pane, .outgoing-link-pane, .search-empty-state, .empty-state, .view-header-title, .view-header-title-container, .view-header-breadcrumb, .view-header-breadcrumb-separator, .workspace-drawer-vault-switcher, .workspace-drawer-vault-switcher *, .workspace-drawer-vault-name, .workspace-drawer-vault-actions, .workspace-drawer-vault-actions *) {
+	color: var(--docxer-md-env-muted) !important;
+	-webkit-text-fill-color: var(--docxer-md-env-muted) !important;
+	stroke: currentColor !important;
+}
+
+body.word-like-document-view-enabled:is(.word-like-document-view-env-focus-dark, .word-like-document-view-env-word2019-blue, .word-like-document-view-env-word2000-blue)
+:is(.mod-left-split, .mod-right-split)
+:is(.tree-item-self.is-active, .nav-file-title.is-active, .nav-folder-title.is-active) {
+	background: var(--docxer-md-env-panel-active-bg) !important;
+	color: var(--docxer-md-env-panel-active-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-env-panel-active-text) !important;
+}
+
+body.word-like-document-view-enabled:is(.word-like-document-view-env-focus-dark, .word-like-document-view-env-word2019-blue, .word-like-document-view-env-word2000-blue)
+:is(.mod-left-split, .mod-right-split) .workspace-tab-header.is-active,
+body.word-like-document-view-enabled:is(.word-like-document-view-env-focus-dark, .word-like-document-view-env-word2019-blue, .word-like-document-view-env-word2000-blue)
+.workspace-tab-header-container :is(.clickable-icon.is-active, .clickable-icon.mod-active, .is-active > .clickable-icon, .mod-active > .clickable-icon, .clickable-icon[aria-pressed="true"]) {
+	background-color: var(--docxer-md-env-top-active-bg) !important;
+	color: var(--docxer-md-env-top-active-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-env-top-active-text) !important;
+	stroke: currentColor !important;
+}
+
+body.word-like-document-view-enabled:is(.word-like-document-view-env-focus-dark, .word-like-document-view-env-word2019-blue, .word-like-document-view-env-word2000-blue)
+:is(.mod-left-split, .mod-right-split) .workspace-tab-header.is-active * {
+	color: var(--docxer-md-env-top-active-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-env-top-active-text) !important;
+	stroke: currentColor !important;
+}
+
+body.word-like-document-view-enabled:is(.word-like-document-view-env-focus-dark, .word-like-document-view-env-word2019-blue, .word-like-document-view-env-word2000-blue)
+:is(.nav-header, .view-header)
+:is(.clickable-icon, .nav-action-button, .view-action, button, .clickable-icon *, .nav-action-button *, .view-action *, button *) {
+	color: var(--docxer-md-env-action-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-env-action-text) !important;
+	stroke: currentColor !important;
+}
+
+@media (max-width: 860px) {
+	body.word-like-document-view-enabled {
+		--docxer-md-page-width-base: calc(100vw - 28px);
+		--docxer-md-padding-top-base: 36px;
+		--docxer-md-padding-right-base: 28px;
+		--docxer-md-padding-bottom-base: 36px;
+		--docxer-md-padding-left-base: 28px;
+		--docxer-md-font-size-base: 15px;
+	}
+}

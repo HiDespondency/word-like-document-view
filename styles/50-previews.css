@@ -1,0 +1,61 @@
+/* Popovers and embedded document previews. */
+/* Предпросмотр ссылки относится к светлой странице и остаётся светлым. */
+body.word-like-document-view-enabled.word-like-document-view-document-light .popover.hover-popover {
+	background: #ffffff !important;
+	background-color: #ffffff !important;
+	color: #000000 !important;
+	-webkit-text-fill-color: #000000 !important;
+	border: 1px solid #8a8a8a !important;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18) !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .popover.hover-popover * {
+	color: #000000 !important;
+	-webkit-text-fill-color: #000000 !important;
+}
+
+/* Вложенный просмотрщик DOCX/PDF должен использовать фон страницы уже на
+   этапе загрузки, иначе светлый popover на мгновение сменяется тёмным. */
+body.word-like-document-view-enabled.word-like-document-view-document-light .popover.hover-popover:has(.docxer-embed, .pdf-embed) :is(.docxer-embed, .pdf-embed, .pdf-embed iframe) {
+	background: var(--docxer-md-page) !important;
+	background-color: var(--docxer-md-page) !important;
+	color: var(--docxer-md-ink) !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-dark .popover.hover-popover:has(.docxer-embed, .pdf-embed) :is(.docxer-embed, .pdf-embed, .pdf-embed iframe) {
+	background: var(--docxer-md-page) !important;
+	background-color: var(--docxer-md-page) !important;
+	color: var(--docxer-md-ink) !important;
+}
+
+/* Обычная подсказка интерфейса не является предпросмотром страницы.
+   В тёмном окружении она должна оставаться тёмной, в том числе на Canvas. */
+body.theme-dark.word-like-document-view-enabled .tooltip {
+	/* Тёмная палитра Word-like, но не чистый чёрный: тултип должен
+	   отделяться от тёмного фона Canvas и боковой панели. */
+	--tooltip-bg: #2a2a2a !important;
+	background: var(--tooltip-bg) !important;
+	background-color: var(--tooltip-bg) !important;
+	color: var(--text-normal) !important;
+	-webkit-text-fill-color: var(--text-normal) !important;
+	border: 1px solid var(--background-modifier-border) !important;
+}
+
+body.theme-dark.word-like-document-view-enabled .tooltip .tooltip-arrow {
+	border-bottom-color: var(--tooltip-bg) !important;
+}
+
+body.theme-dark.word-like-document-view-enabled .tooltip.mod-right .tooltip-arrow {
+	border-right-color: var(--tooltip-bg) !important;
+	border-bottom-color: transparent !important;
+}
+
+body.theme-dark.word-like-document-view-enabled .tooltip.mod-left .tooltip-arrow {
+	border-left-color: var(--tooltip-bg) !important;
+	border-bottom-color: transparent !important;
+}
+
+body.theme-dark.word-like-document-view-enabled .tooltip.mod-top .tooltip-arrow {
+	border-top-color: var(--tooltip-bg) !important;
+	border-bottom-color: transparent !important;
+}

@@ -1,0 +1,68 @@
+/* Tables inherit Obsidian's code background with higher specificity. Keep
+   inline command labels readable on the Word-like document page as well. */
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table code,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table code * {
+	background: var(--docxer-md-code-bg) !important;
+	background-color: var(--docxer-md-code-bg) !important;
+	color: var(--docxer-md-code-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-code-text) !important;
+	border-color: var(--docxer-md-code-border) !important;
+}
+
+/* Шестиколоночный реестр источников шире листа намеренно: контейнер
+   прокручивается по горизонтали, поэтому содержимое последнего столбца не
+   сжимается в нечитаемые узкие буквы. */
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view .table-wrapper:has(table th:nth-child(6)),
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view .markdown-rendered-table:has(table th:nth-child(6)) {
+	overflow-x: auto !important;
+	overflow-y: visible !important;
+	scrollbar-width: auto !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view .table-wrapper:has(table th:nth-child(6))::-webkit-scrollbar,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view .markdown-rendered-table:has(table th:nth-child(6))::-webkit-scrollbar {
+	display: initial !important;
+	height: 10px !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-preview-view table:has(th:nth-child(6)) {
+	width: max-content !important;
+	min-width: 1080px !important;
+	max-width: none !important;
+	table-layout: auto !important;
+}
+
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget table code,
+body.word-like-document-view-enabled .word-like-document-view-host-markdown .markdown-source-view.mod-cm6 .cm-table-widget table code * {
+	background: var(--docxer-md-code-bg) !important;
+	background-color: var(--docxer-md-code-bg) !important;
+	color: var(--docxer-md-code-text) !important;
+	-webkit-text-fill-color: var(--docxer-md-code-text) !important;
+	border: 1px solid var(--docxer-md-code-border) !important;
+	border-radius: 3px !important;
+	padding: 0.08em 0.28em !important;
+	font-family: "Cascadia Code", "Consolas", monospace !important;
+	font-size: 0.99em !important;
+	line-height: var(--docxer-md-line-height) !important;
+	vertical-align: baseline;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown :is(.markdown-preview-view, .markdown-source-view.mod-cm6) blockquote {
+	border-left: 3px solid #000000 !important;
+	background: transparent !important;
+	color: var(--docxer-md-ink) !important;
+	-webkit-text-fill-color: var(--docxer-md-ink) !important;
+	padding-left: 16px !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-dark .word-like-document-view-host-markdown :is(.markdown-preview-view, .markdown-source-view.mod-cm6) blockquote {
+	border-left: 3px solid #ffffff !important;
+	background: transparent !important;
+	color: var(--docxer-md-ink) !important;
+	-webkit-text-fill-color: var(--docxer-md-ink) !important;
+	padding-left: 16px !important;
+}
+
+body.word-like-document-view-enabled.word-like-document-view-document-light .word-like-document-view-host-markdown :is(.markdown-preview-view, .markdown-rendered) blockquote {
+	border-left: 3px solid #000000 !important;
+}
